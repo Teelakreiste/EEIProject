@@ -10,18 +10,16 @@
                         <div class="mb-4">
                             <label for="user" class="form-label">User</label>
                             <input type="text" class="form-control" id="user" name="usuario" placeholder="" required>
-                        </div>
-    
-                        <div class="mb-4">
+                 
                             <label for="contra" class="form-label">Password</label>
                             <input type="password" class="form-control" id="contra" name="contraseña" placeholder="" required>
+                            <a id="pwd" href="#">Forgot password?</a>
                         </div>
+                        <input type="submit" class="btn" value="Sing In">
                     </form>
                 </div>
-                <a id="pwd" href="#">Forgot password?</a>
-                <input type="submit" class="btn" value="Sing In">
                     <div class="div-register">
-                        <p>Not a member?<a class="pr" href=""> Join here</a>.</p>
+                        <p>Not a member?<a class="pr" (click)="onRegister()"> Join here</a>.</p>
                     </div>
             </div>
         </div>

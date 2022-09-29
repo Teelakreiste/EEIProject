@@ -1,1 +1,28 @@
-<p>register works!</p>
+<div class="container-background">
+    <img class="mid-bg" src="../../assets/imgLogin/undraw_fishing_hoxa.svg">
+    <div class="container">
+        <div class="login-container">
+            <div class="bg-white rounded-5 shadow-5-strong p-5 div-form">
+                <img class="avatar" src="../../assets/imgLogin/undraw_fish_bowl_uu88.svg">
+                <h2>REGISTER</h2>
+                <div class="row justify-content-center">
+                    <form class="form" id="formulario">
+                        <div class="mb-4">
+                            <label for="user" class="form-label">User</label>
+                            <input type="text" class="form-control" id="user" name="usuario" placeholder="" required>
+                    
+                            <label for="contra" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="contra" name="contraseña" placeholder="" required>
+                            <label for="contra" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="contra" name="contraseña" placeholder="" required>
+                        </div>
+                        <input type="submit" class="btn" value="Next">
+                    </form>
+                </div>
+                <div class="div-register">
+                    <p>Are you member?<a class="pr" (click)="onLogin()"> Login here</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
