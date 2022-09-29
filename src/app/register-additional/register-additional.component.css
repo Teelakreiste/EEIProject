@@ -6,6 +6,21 @@ h1 {
 	margin: 15px 0;
 	color: #37329e;
 }
+
+.fa-solid {
+    color: #37329e;
+    margin: 0 10px;
+}
+
+.fa-solid:hover {
+    color: #6C63FF;
+    cursor: pointer;
+}
+
+a:hover{
+    cursor: pointer;
+}
+
 .cont {
     display: flex;
     justify-content: center;
