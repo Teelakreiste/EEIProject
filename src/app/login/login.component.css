@@ -4,10 +4,6 @@
 	box-sizing: border-box;
 }
 
-body {
-	font-family: 'Roboto', sans-serif;
-}
-
 h2 {
 	font-size: 2.9rem;
     font-weight: bold;
@@ -43,17 +39,17 @@ a:hover{
 }
 
 .div-register {
-    border-radius: 20px;
-    height: 40px;
-    background-color: rgba(133, 107, 247, 0.1);
+    padding-top: 30px;
 }
 
 .div-register p {
     color: #6C63FF;
     font-weight: 100;
     margin: 0;
-    padding: 0;
-    padding-top: 8px;
+    padding: 8px;
+    border-radius: 20px;
+    height: 40px;
+    background-color: rgba(133, 107, 247, 0.1);
 }
 
 .pr {
@@ -118,7 +114,6 @@ a:hover{
 .form-control {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    /*box-shadow: 1px 1px 5px #a19886;*/
     box-shadow: 1px 1px 5px #37329e;
     border: 2px solid transparent;
     border-radius: 15px;
@@ -131,14 +126,6 @@ a:hover{
 .form-control:focus {
     border: 3px solid #6C63FF;
     outline: none;
-}
-
-.input-div {
-	display: grid;
-	grid-template-columns: 7% 93%;
-	margin: 25px 0;
-	padding: 5px 0;
-	border-bottom: 2px solid #d9d9d9;
 }
 
 .btn{
