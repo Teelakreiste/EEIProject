@@ -17,4 +17,8 @@ export class RegisterComponent implements OnInit {
     this.router.navigate(['/eei/login']);
   }
 
+  onSubmited() {
+    this.router.navigate(['/eei/register/register-additional']);
+  }
+
 }

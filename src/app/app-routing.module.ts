@@ -10,7 +10,9 @@ const routes: Routes = [
   { path: 'main', component: MainComponent },
   { path: 'eei/login', component: LoginComponent },
   { path: 'eei/register', component: RegisterComponent },
-  { path: 'eei/register/register-additional', component: RegisterAdditionalComponent }
+  { path: 'eei/register/register-additional', component: RegisterAdditionalComponent },
+  { path: '', redirectTo: '/eei/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/eei/login', pathMatch: 'full' }
 ];
 
 @NgModule({

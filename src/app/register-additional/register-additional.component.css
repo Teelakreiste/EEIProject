@@ -1,0 +1,67 @@
+
+h1 {
+    text-align: center;
+    font-weight: bold;
+	text-transform: uppercase;
+	margin: 15px 0;
+	color: #37329e;
+}
+.cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container {
+    width: 100vw;
+	height: 90vh;
+	justify-content: center;
+	display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 0rem;
+	padding:0 2rem;
+}
+
+.form-label {
+    color: #928c8c;
+    transition: .3s;
+}
+
+.form-label:hover {
+    color: #6C63FF;
+}
+
+.form-control {
+    padding: 10px 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    box-shadow: 1px 1px 5px #37329e;
+    border: 0 solid transparent;
+    transition: .3s ease all;
+}
+
+.form-control:focus {
+    border-bottom: 3px solid #6C63FF;
+    outline: none;
+}
+
+.btn{
+    display: block;
+    margin: 0 auto;
+    width: 20%;
+	border-radius: 20px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #6C63FF, #37329e, #6C63FF);
+	background-size: 200%;
+	font-size: 1.2rem;
+	color: #fff;
+	font-family: 'Roboto', sans-serif;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: .5s;
+}
+
+.btn:hover{
+	background-position: right;
+}
