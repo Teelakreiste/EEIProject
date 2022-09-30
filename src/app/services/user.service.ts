@@ -9,8 +9,8 @@ export class UserService {
 
   constructor(private auth: Auth) { }
 
-  email: string;
-  password: string;
+  email: string = "";
+  password: string = "";
 
 
   async register(email: string, password: string) {
@@ -32,4 +32,10 @@ export class UserService {
   verifyEmail() {
     return sendEmailVerification(this.auth.currentUser);
   }
+
+  isLoggedIn(): boolean {
+    const user = this.auth.currentUser;
+    return (user !== null) ? true : false;
+  }
+  
 }

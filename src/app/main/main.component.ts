@@ -12,12 +12,10 @@ export class MainComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
-    if (this.userService.email == null || this.userService.email == '' || this.userService.email == undefined) {
-      this.userService.logout();
-      this.router.navigate(['/eei/login']);
-    } else {
-      this.title = this.userService.email;
-    }
   }
 
+  logout() {
+    this.userService.logout();
+    this.router.navigate(['/eei/login']);
+  }
 }
