@@ -6,17 +6,16 @@
                 <img class="avatar" src="../../assets/imgLogin/undraw_fish_bowl_uu88.svg">
                 <h2>REGISTER</h2>
                 <div class="row justify-content-center">
-                    <form class="form" id="formulario">
+                    <form class="form" [formGroup]="userForm" (ngSubmit)="onSubmit()" id="formulario">
                         <div class="mb-4">
-                            <label for="user" class="form-label">User</label>
-                            <input type="text" class="form-control" id="user" name="usuario" placeholder="" required/>
-                    
+                            <label for="user" class="form-label">Email</label>
+                            <input formControlName="email" type="text" class="form-control" id="email" name="email" placeholder="" required/>
                             <label for="contra" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="contra" name="contraseña" placeholder="" required/>
+                            <input formControlName="password" type="password" class="form-control" id="password" name="password" placeholder="" required/>
                             <label for="contra" class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" id="contra" name="contraseña" placeholder="" required/>
+                            <input formControlName="password2" type="password" class="form-control" id="password2" name="password2"placeholder="" required/>
                         </div>
-                        <input type="submit" (click)="onSubmited()" class="btn" value="Next">
+                        <input [disabled]="!userForm.valid" type="submit" class="btn btn-success" value="Next">
                     </form>
                 </div>
                 <div class="div-register">

@@ -5,18 +5,18 @@
             <h1>COMPANY INFORMATION</h1>
         </div>
         <div class="row justify-content-center">
-            <form class="form" id="formulario">
+            <form [formGroup]="companyForm" (ngSubmit)="onSubmit()" class="form" id="formulario">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-outline mb-4">
-                            <input type="text" id="form6Example1" class="form-control" required/>
-                            <label class="form-label" for="form6Example1">*NIT</label>
+                            <input formControlName="nit" type="text" id="nit" class="form-control" required>
+                            <label class="form-label" for="nit">*NIT</label>
                         </div>
                     </div>
                     <div class="col-md-8">
                         <div class="form-outline mb-4">
-                            <input type="text" id="form6Example2" class="form-control" required/>
-                            <label class="form-label" for="form6Example2">*Company Name</label>
+                            <input formControlName="name" type="text" id="companyName" class="form-control" required>
+                            <label class="form-label" for="companyName">*Company Name</label>
                         </div>
                     </div>
                 </div>
@@ -24,20 +24,20 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-outline mb-4">
-                            <input type="text" id="form6Example3" class="form-control" required/>
-                            <label class="form-label" for="form6Example3">*Email</label>
+                            <input formControlName="email" type="text" id="email" class="form-control" required>
+                            <label class="form-label" for="email">*Email</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-outline mb-4">
-                            <input type="text" id="form6Example4" class="form-control" required/>
-                            <label class="form-label" for="form6Example4">*Phone</label>
+                            <input formControlName="phone" type="text" id="phone" class="form-control" required>
+                            <label class="form-label" for="phone">*Phone</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-outline mb-4">
-                            <input type="text" id="form6Example4" class="form-control" />
-                            <label class="form-label" for="form6Example4">Cell Phone</label>
+                            <input formControlName="cellphone" type="text" id="cellphone" class="form-control">
+                            <label class="form-label" for="cellphone">Cell Phone</label>
                         </div>
                     </div>
                 </div>
@@ -45,20 +45,20 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-outline mb-4">
-                            <input type="text" id="form6Example5" class="form-control" required/>
-                            <label class="form-label" for="form6Example5">*Country</label>
+                            <input formControlName="country" type="text" id="country" class="form-control" required>
+                            <label class="form-label" for="country">*Country</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-outline mb-4">
-                            <input type="text" id="form6Example6" class="form-control" required/>
-                            <label class="form-label" for="form6Example6">*City</label>
+                            <input formControlName="city" type="text" id="city" class="form-control" required>
+                            <label class="form-label" for="city">*City</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-outline mb-4">
-                            <input type="text" id="form6Example7" class="form-control" required/>
-                            <label class="form-label" for="form6Example7">*State</label>
+                            <input formControlName="state" type="text" id="state" class="form-control" required>
+                            <label class="form-label" for="state">*State</label>
                         </div>
                     </div>
                 </div>
@@ -66,19 +66,19 @@
                 <div class="row">
                     <div class="col-md-9">
                         <div class="form-outline mb-4">
-                            <input type="text" id="form6Example8" class="form-control" required/>
-                            <label class="form-label" for="form6Example8">*Address</label>
+                            <input formControlName="address" type="text" id="address" class="form-control" required>
+                            <label class="form-label" for="address">*Address</label>
                         </div>
                     </div>
     
                     <div class="col-md-3">
                         <div class="form-outline mb-4">
-                            <input type="text" id="form6Example8" class="form-control" required/>
-                            <label class="form-label" for="form6Example8">*Zip Code</label>
+                            <input formControlName="zipCode" type="text" id="zipCode" class="form-control" required>
+                            <label class="form-label" for="zipCode">*Zip Code</label>
                         </div>
                     </div>
                 </div>
-                <input type="submit" class="btn" value="Send">
+                <input [disabled]="!companyForm.valid" type="submit" class="btn btn-success" value="Sign up">
             </form>
         </div>
     </div>

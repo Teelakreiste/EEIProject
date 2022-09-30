@@ -7,7 +7,7 @@ import { RegisterAdditionalComponent } from './register-additional/register-addi
 import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
-  { path: 'main', component: MainComponent },
+  { path: 'eei/main', component: MainComponent },
   { path: 'eei/login', component: LoginComponent },
   { path: 'eei/register', component: RegisterComponent },
   { path: 'eei/register/register-additional', component: RegisterAdditionalComponent },
