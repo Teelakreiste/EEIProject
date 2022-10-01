@@ -10,7 +10,7 @@
                     <div class="col-md-4">
                         <div class="form-outline mb-4">
                             <input formControlName="nit" type="text" id="nit" class="form-control" required>
-                            <label class="form-label" for="nit">*NIT</label>
+                            <label class="form-label" for="nit">*Nit</label>
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-outline mb-4">
-                            <input formControlName="email" type="text" id="email" class="form-control" required>
+                            <input formControlName="email" readonly type="text" id="email" class="form-control" required>
                             <label class="form-label" for="email">*Email</label>
                         </div>
                     </div>
@@ -62,12 +62,21 @@
                         </div>
                     </div>
                 </div>
-    
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-outline mb-4">
+                            <input formControlName="address" type="text" id="address" class="form-control" required>
+                            <label class="form-label" for="address">*Address 1</label>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-md-9">
                         <div class="form-outline mb-4">
-                            <input formControlName="address" type="text" id="address" class="form-control" required>
-                            <label class="form-label" for="address">*Address</label>
+                            <input formControlName="address2" type="text" id="address" class="form-control">
+                            <label class="form-label" for="address">Address 2</label>
                         </div>
                     </div>
     

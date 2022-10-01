@@ -10,8 +10,8 @@ import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angula
 const routes: Routes = [
   { path: 'eei/main', component: MainComponent, ...canActivate(() => redirectUnauthorizedTo(['/eei/login'])) },
   { path: 'eei/login', component: LoginComponent, ...canActivate(() => redirectLoggedInTo(['/eei/main'])) },
-  { path: 'eei/register', component: RegisterComponent },
-  { path: 'eei/register/additional', component: RegisterAdditionalComponent },
+  { path: 'eei/register', component: RegisterComponent, ...canActivate(() => redirectLoggedInTo(['/eei/main'])) },
+  { path: 'eei/register/additional', component: RegisterAdditionalComponent, ...canActivate(() => redirectLoggedInTo(['/eei/main'])) },
   { path: '', redirectTo: '/eei/main', pathMatch: 'full' },
   { path: '**', redirectTo: '/eei/login', pathMatch: 'full' }
 ];

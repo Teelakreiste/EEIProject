@@ -16,10 +16,19 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  menuToggle() {
+    const toggleMenu = document.querySelector('.menu');
+    toggleMenu.classList.toggle('active');
+  }
+
   logout() {
     this.userService.logout();
     this.localService.clearToken();
-    this.localService.clearToken();
+    this.refesh();
     this.router.navigate(['/eei/login']);
+  }
+
+  refesh() {
+    window.location.reload();
   }
 }

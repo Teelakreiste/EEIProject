@@ -31,26 +31,30 @@ export class RegisterAdditionalComponent implements OnInit {
       phone: '',
       cellphone: '',
       address: '',
+      address2: '',
       city: '',
       state: '',
       zipCode: '',
       country: ''
    });
   }
-
   
   companyForm: FormGroup;
   ngOnInit(): void {
+    if (this.getLocalStorage() == null) {
+      this.router.navigate(['/eei/register']);
+    }
     if(this.getBackupData() != null) {
       this.companyForm.setValue(this.getBackupData());
     }
     else {
+      // Get the user data from the local storage and set it in the form fields
       this.companyForm.get('email').setValue(this.getLocalStorage());
     }
   }
 
   getLocalStorage() {
-    // Get the user data
+    // Get the user data from the local storage and set it in the form fields
     const email = this.localService.getJsonValue('rEmail');
     return email;
   }
@@ -72,7 +76,7 @@ export class RegisterAdditionalComponent implements OnInit {
     let address: Address = {
       codCompany: '',
       address: this.companyForm.get('address').value,
-      address2: '',
+      address2: this.companyForm.get('address2').value,
       city: this.companyForm.get('city').value,
       state: this.companyForm.get('state').value,
       zipCode: this.companyForm.get('zipCode').value,

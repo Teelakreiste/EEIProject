@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
   }
 
   onRegister() {
+    this.localService.clearToken();
     this.router.navigate(['/eei/register']);
   }
 
