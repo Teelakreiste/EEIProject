@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
+import { AlertService } from '../services/alert.service';
+
+import { LocalService } from '../services/local.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -13,7 +15,8 @@ export class LoginComponent implements OnInit {
   
   loginForm: FormGroup;
 
-  constructor(private userService: UserService, private router: Router) { 
+  constructor(private userService: UserService, private router: Router,
+    private localService: LocalService, private alertService: AlertService) { 
     this.loginForm = new FormGroup({
       email: new FormControl(''),
       password: new FormControl('')
@@ -21,20 +24,28 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    /*if (this.userService.isLoggedIn()) {
+      this.router.navigate(['/eei/main']);
+    }*/
+
+    this.isLogged();
+  }
+
+  isLogged() {
+    if (this.localService.getJsonValue('loginEmail') != null && this.localService.getJsonValue('loginPassword') != null) {
+      this.userService.login({email: this.localService.getJsonValue('loginEmail'), password: this.localService.getJsonValue('loginPassword')}).then(res => {
+        this.router.navigate(['/eei/main']);
+      });
+    }
   }
 
   onSubmit() {
     this.userService.login(this.loginForm.value).then(res => {
-      this.userService.email = this.loginForm.value.email;
+      this.localService.setJsonValue('loginEmail', this.loginForm.get('email').value);
+      this.localService.setJsonValue('loginPassword', this.loginForm.get('password').value);
       this.router.navigate(['/eei/main']);
-    }
-    ).catch(err => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'User or password incorrect!',
-        footer: 'Please try again'
-      });
+    }).catch(err => {
+      this.alertService.alertError(err.message);
     });
   }
 

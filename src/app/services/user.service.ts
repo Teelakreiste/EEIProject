@@ -9,8 +9,8 @@ export class UserService {
 
   constructor(private auth: Auth) { }
 
-  email: string = "";
-  password: string = "";
+  //email: string = "";
+  //password: string = "";
 
 
   async register(email: string, password: string) {

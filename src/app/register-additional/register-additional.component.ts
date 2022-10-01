@@ -6,9 +6,10 @@ import { UserService } from '../services/user.service';
 import { AddressesService } from '../services/addresses.service';
 import { CompaniesService } from '../services/companies.service';
 
-import  Swal  from 'sweetalert2';
 import { Company } from '../models/company.model';
 import { Address } from '../models/address.model';
+import { LocalService } from '../services/local.service';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-register-additional',
@@ -16,12 +17,13 @@ import { Address } from '../models/address.model';
   styleUrls: ['./register-additional.component.css']
 })
 export class RegisterAdditionalComponent implements OnInit {
-  
   constructor(public userService: UserService,
     private addressesService: AddressesService,
     private companiesService: CompaniesService,
     private formBuilder: FormBuilder,
-    private router: Router) {
+    private router: Router,
+    private localService: LocalService,
+    private alertService: AlertService) { 
     this.companyForm = this.formBuilder.group({
       nit: '',
       name: '',
@@ -36,17 +38,37 @@ export class RegisterAdditionalComponent implements OnInit {
    });
   }
 
-
+  
   companyForm: FormGroup;
   ngOnInit(): void {
-    this.companyForm.get('email').setValue(this.userService.email);
+    if(this.getBackupData() != null) {
+      this.companyForm.setValue(this.getBackupData());
+    }
+    else {
+      this.companyForm.get('email').setValue(this.getLocalStorage());
+    }
+  }
+
+  getLocalStorage() {
+    // Get the user data
+    const email = this.localService.getJsonValue('rEmail');
+    return email;
   }
 
   onBack() {
+    this.setBackupData();
     this.router.navigate(['/eei/register']);
   }
 
-  onSubmit() {
+  setBackupData() {
+    this.localService.setJsonValue('registerData', this.companyForm.value);
+  }
+
+  getBackupData() {
+    return this.localService.getJsonValue('registerData');
+  }
+
+  private getAdress() {
     let address: Address = {
       codCompany: '',
       address: this.companyForm.get('address').value,
@@ -56,7 +78,10 @@ export class RegisterAdditionalComponent implements OnInit {
       zipCode: this.companyForm.get('zipCode').value,
       country: this.companyForm.get('country').value
     }
+    return address;
+  }
 
+  private getCompany() {
     let company: Company = {
       email: this.companyForm.get('email').value,
       nit: this.companyForm.get('nit').value,
@@ -65,39 +90,31 @@ export class RegisterAdditionalComponent implements OnInit {
       cellphone: this.companyForm.get('cellphone').value,
       codAddress: ''
     }
-    
-    
+    return company;
   }
-  
+
+  onSubmit() {
+    let address = this.getAdress();
+    let company = this.getCompany();
+    this.createUser(address, company);
+  }
+
   createUser(address: Address, company: Company) {
     this.companiesService.createCompany(company).then((res) => {
       address.codCompany = res.id;
       this.addressesService.createAddress(address).then((res) => {
         company.codAddress = res.id;
         this.companiesService.updateCompany(address.codCompany, company).then();
-        this.userService.register(this.userService.email, this.userService.password).then();
-        Swal.fire({
-          icon: 'success',
-          title: 'Registro exitoso',
-          text: 'Se ha registrado correctamente',
-          color: '#6C63FF'
-        });
+        this.userService.register(this.localService.getJsonValue('rEmail'), this.localService.getJsonValue('rPassword')).then();
+        this.alertService.alertSuccess('Registro exitoso', 'Se ha registrado correctamente');
+        this.router.navigate(['/eei/login']);
+        this.localService.clearToken();
       }).catch((err) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Ha ocurrido un error',
-          color: '#6C63FF'
-        });
+        this.alertService.alertError(err.message);
       });
-      this.router.navigate(['/eei/login']);
     }).catch((err) => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: err.message,
-        color: '#6C63FF'
-      });
+      this.alertService.alertError(err.message);
     });
   }
+
 }

@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'eei/main', component: MainComponent, ...canActivate(() => redirectUnauthorizedTo(['/eei/login'])) },
   { path: 'eei/login', component: LoginComponent, ...canActivate(() => redirectLoggedInTo(['/eei/main'])) },
   { path: 'eei/register', component: RegisterComponent },
-  { path: 'eei/register/register-additional', component: RegisterAdditionalComponent },
+  { path: 'eei/register/additional', component: RegisterAdditionalComponent },
   { path: '', redirectTo: '/eei/main', pathMatch: 'full' },
   { path: '**', redirectTo: '/eei/login', pathMatch: 'full' }
 ];
