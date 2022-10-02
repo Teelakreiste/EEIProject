@@ -25,4 +25,13 @@ export class AlertService {
       color: '#6C63FF'
     });
   }
+
+  alertInfo(message: string) {
+    Swal.fire({
+      icon: 'info',
+      title: 'Info',
+      text: message,
+      color: '#6C63FF'
+    });
+  }
 }

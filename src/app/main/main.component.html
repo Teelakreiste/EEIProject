@@ -23,12 +23,21 @@
             <div class="nav-item">
                 <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
+            <div class="nav-item dropdown-mb">
+                <a class="nav-link" href="" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="img-profile" src="../../assets/imgMain/undraw_pic_profile_re_1tdc.svg" alt="">
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" >Setting</a>
+                    <a class="dropdown-item" (click)="logout()">Logout</a>
+                </div>
+            </div>
         </div>
         <div class="nav-item dropdown">
             <a class="nav-link" href="" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile" src="../../assets/imgMain/undraw_pic_profile_re_1tdc.svg" alt="">
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <div class="dropdown-menu dp" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" >Setting</a>
                 <a class="dropdown-item" (click)="logout()">Logout</a>
             </div>

@@ -141,6 +141,22 @@ a:hover{
 	background-position: right;
 }
 
+.alert-danger {
+	color: #721c24;
+	background-color: #f8d7da;
+	border-color: #f5c6cb;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 10px 0;
+}
+
+.container-error-message {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
 @media screen and (max-width: 1050px){
 	.container{
 		grid-gap: 5rem;

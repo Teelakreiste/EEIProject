@@ -6,16 +6,43 @@
                 <img class="avatar" src="../../assets/imgLogin/undraw_fish_bowl_uu88.svg">
                 <h2>REGISTER</h2>
                 <div class="row justify-content-center">
-                    <form class="form" [formGroup]="userForm" (ngSubmit)="onSubmit()" id="formulario">
+                    <form class="form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
                         <div class="mb-4">
                             <label for="user" class="form-label">Email</label>
-                            <input formControlName="email" type="text" class="form-control" id="email" name="email" placeholder="" required/>
+                            <input formControlName="email" type="text" class="form-control" id="email" name="email">
+                            <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                                <div class="container-error-message" *ngIf="email.errors?.['required']">
+                                    Email is required
+                                </div>
+                                <div class="container-error-message" *ngIf="(email.dirty || email.touched) && email.invalid && email.errors?.['pattern']">
+                                    Email is not valid
+                                </div>
+                            </div>
                             <label for="contra" class="form-label">Password</label>
-                            <input formControlName="password" type="password" class="form-control" id="password" name="password" placeholder="" required/>
+                            <input formControlName="password" type="password" class="form-control" id="password" name="password">
+                            <div class="alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+                                <div class="container-error-message" *ngIf="password.errors?.['required'] || password.errors?.['minlength']">
+                                    Password must contain at least 8 characters.
+                                </div>
+                                <div class="container-error-message" *ngIf="password.errors?.['pattern']">
+                                    Password must contain one uppercase, one lowercase, one number and one special character.
+                                </div>
+                                <div class="container-error-message" *ngIf="password.errors?.['maxlength']">
+                                    Password must contain a maximum of 20 characters.
+                                </div>
+                            </div>
                             <label for="contra" class="form-label">Confirm Password</label>
-                            <input formControlName="password2" type="password" class="form-control" id="password2" name="password2"placeholder="" required/>
+                            <input formControlName="password2" type="password" class="form-control" id="password2" name="password2">
+                            <div class="alert-danger" *ngIf="password2.invalid && (password2.dirty || password2.touched)">
+                                <div class="container-error-message" *ngIf="password2.errors?.['required']">
+                                    Confirm Password is required
+                                </div>
+                                <div class="container-error-message" *ngIf="password2.errors?.['mustMatch']">
+                                    Passwords do not match
+                                </div>
+                            </div>
                         </div>
-                        <input [disabled]="!userForm.valid" type="submit" class="btn btn-success" value="Next">
+                        <input type="submit" class="btn btn-success" value="Next">
                     </form>
                 </div>
                 <div class="div-register">

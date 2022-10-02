@@ -43,13 +43,12 @@ a:hover {
     box-shadow: inset 0 0 0 2px #6C63FF;
 }
 
-.nav-item.dropdown {
-    padding: 0 0.5rem;
-    margin: 0 auto;
+.nav-item.dropdown-mb {
+    display: none;
 }
 
-.dropdown-menu {
-    left: -65px;
+.dropdown-menu.dp {
+    left: -67px;
     border-radius: 10px;
     box-shadow: inset 0 0 0 1px #e6e6e6;
 }
@@ -128,4 +127,20 @@ h3 {
 
 .btn:hover{
 	background-position: right;
+}
+
+@media screen and (max-width: 900px){
+    .nav-item.dropdown {
+        display: none;
+    }
+    
+    .nav-item.dropdown-mb {
+        display: block;
+    }
+
+    .dropdown-menu {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: inset 0 0 0 1px #e6e6e6; 
+    }
 }

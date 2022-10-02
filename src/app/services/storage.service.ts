@@ -28,4 +28,24 @@ export class StorageService {
         return data;
     }
   });
+
+
+  public secureSStorage = new SecureStorage(sessionStorage, {
+    hash: function hash(key): any {
+        key = CryptoJS.SHA256(key, SECRET_KEY);
+        return key.toString();
+    },
+    // Encrypt the sessionstorage data
+    encrypt: function encrypt(data) {
+        data = CryptoJS.AES.encrypt(data, SECRET_KEY);
+        data = data.toString();
+        return data;
+    },
+    // Decrypt the encrypted data
+    decrypt: function decrypt(data) {
+        data = CryptoJS.AES.decrypt(data, SECRET_KEY);
+        data = data.toString(CryptoJS.enc.Utf8);
+        return data;
+    }
+  });
 }

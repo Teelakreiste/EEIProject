@@ -1,22 +1,33 @@
 <div class="cont">
     <div class="container bg-white rounded-5 shadow-5-strong p-5 div-form">
-        <div>
+        <div class="row justify-content-center">
             <a (click)="onBack()"><i class="fa-solid fa-arrow-left"></i></a>
             <h1>COMPANY INFORMATION</h1>
-        </div>
-        <div class="row justify-content-center">
             <form [formGroup]="companyForm" (ngSubmit)="onSubmit()" class="form" id="formulario">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-outline mb-4">
-                            <input formControlName="nit" type="text" id="nit" class="form-control" required>
+                            <input formControlName="nit" type="text" id="nit" class="form-control">
                             <label class="form-label" for="nit">*Nit</label>
+                            <div class="alert-danger" *ngIf="nit.invalid && (nit.dirty || nit.touched)">
+                                <div class="container-error-message" *ngIf="nit.errors?.['required']">
+                                    Required field
+                                </div>
+                                <div class="container-error-message" *ngIf="nit.errors?.['pattern']">
+                                    Invalid Nit
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-8">
                         <div class="form-outline mb-4">
-                            <input formControlName="name" type="text" id="companyName" class="form-control" required>
+                            <input formControlName="name" type="text" id="companyName" class="form-control">
                             <label class="form-label" for="companyName">*Company Name</label>
+                            <div class="alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+                                <div class="container-error-message">
+                                    Required field
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -24,20 +35,43 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-outline mb-4">
-                            <input formControlName="email" readonly type="text" id="email" class="form-control" required>
+                            <input formControlName="email" readonly type="text" id="email" class="form-control">
                             <label class="form-label" for="email">*Email</label>
+                            <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                                <div class="container-error-message">
+                                    Required field
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-outline mb-4">
-                            <input formControlName="phone" type="text" id="phone" class="form-control" required>
+                            <input formControlName="phone" type="text" id="phone" class="form-control">
                             <label class="form-label" for="phone">*Phone</label>
+                            <div class="alert-danger" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                                <div class="container-error-message" *ngIf="phone.errors?.['required']">
+                                    Required field
+                                </div>
+
+                                <div class="container-error-message" *ngIf="phone.errors?.['pattern']">
+                                    Invalid phone number
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-outline mb-4">
                             <input formControlName="cellphone" type="text" id="cellphone" class="form-control">
                             <label class="form-label" for="cellphone">Cell Phone</label>
+                            <div class="alert-danger" *ngIf="cellphone.invalid && (cellphone.dirty || cellphone.touched)">
+                                <div class="container-error-message" *ngIf="cellphone.errors?.['required']">
+                                    Required field
+                                </div>
+
+                                <div class="container-error-message" *ngIf="cellphone.errors?.['pattern']">
+                                    Invalid phone number
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -45,20 +79,35 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-outline mb-4">
-                            <input formControlName="country" type="text" id="country" class="form-control" required>
+                            <input formControlName="country" type="text" id="country" class="form-control">
                             <label class="form-label" for="country">*Country</label>
+                            <div class="alert-danger" *ngIf="country.invalid && (country.dirty || country.touched)">
+                                <div class="container-error-message">
+                                    Required field
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-outline mb-4">
-                            <input formControlName="city" type="text" id="city" class="form-control" required>
+                            <input formControlName="city" type="text" id="city" class="form-control">
                             <label class="form-label" for="city">*City</label>
+                            <div class="alert-danger" *ngIf="city.invalid && (city.dirty || city.touched)">
+                                <div class="container-error-message">
+                                    Required field
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-outline mb-4">
-                            <input formControlName="state" type="text" id="state" class="form-control" required>
+                            <input formControlName="state" type="text" id="state" class="form-control">
                             <label class="form-label" for="state">*State</label>
+                            <div class="alert-danger" *ngIf="state.invalid && (state.dirty || state.touched)">
+                                <div class="container-error-message">
+                                    Required field
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -66,8 +115,17 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-outline mb-4">
-                            <input formControlName="address" type="text" id="address" class="form-control" required>
+                            <input formControlName="address" type="text" id="address" class="form-control">
                             <label class="form-label" for="address">*Address 1</label>
+                            <div class="alert-danger" *ngIf="address.invalid && (address.dirty || address.touched)">
+                                <div class="container-error-message" *ngIf="address.errors?.['required']">
+                                    Required field
+                                </div>
+
+                                <div class="container-error-message" *ngIf="address.errors?.['minlength']">
+                                    Address must contain at least 10 characters
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -77,17 +135,31 @@
                         <div class="form-outline mb-4">
                             <input formControlName="address2" type="text" id="address" class="form-control">
                             <label class="form-label" for="address">Address 2</label>
+                            <div class="alert-danger" *ngIf="address2.invalid && (address2.dirty || address2.touched)">
+                                <div class="container-error-message">
+                                    Required field
+                                </div>
+                            </div>
                         </div>
                     </div>
     
                     <div class="col-md-3">
                         <div class="form-outline mb-4">
-                            <input formControlName="zipCode" type="text" id="zipCode" class="form-control" required>
+                            <input formControlName="zipCode" type="text" id="zipCode" class="form-control">
                             <label class="form-label" for="zipCode">*Zip Code</label>
+                            <div class="alert-danger" *ngIf="zipCode.invalid && (zipCode.dirty || zipCode.touched)">
+                                <div class="container-error-message" *ngIf="zipCode.errors?.['required']">
+                                    Required field
+                                </div>
+
+                                <div class="container-error-message" *ngIf="zipCode.errors?.['pattern']">
+                                    Postal code is invalid
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <input [disabled]="!companyForm.valid" type="submit" class="btn btn-success" value="Sign up">
+                <input type="submit" class="btn btn-success" value="Sign up">
             </form>
         </div>
     </div>

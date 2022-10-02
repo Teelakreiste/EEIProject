@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertService } from '../services/alert.service';
 
@@ -14,21 +14,21 @@ import { UserService } from '../services/user.service';
 export class LoginComponent implements OnInit {
   
   loginForm: FormGroup;
-
+  emailPattern: any = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
   constructor(private userService: UserService, private router: Router,
     private localService: LocalService, private alertService: AlertService) { 
-    this.loginForm = new FormGroup({
-      email: new FormControl(''),
-      password: new FormControl('')
-    });
+    this.loginForm = this.createFormGroup();
   }
 
   ngOnInit(): void {
-    /*if (this.userService.isLoggedIn()) {
-      this.router.navigate(['/eei/main']);
-    }*/
-
     this.isLogged();
+  }
+
+  createFormGroup() {
+    return new FormGroup({
+      email: new FormControl(null, [Validators.required, Validators.pattern(this.emailPattern)]),
+      password: new FormControl(null, [Validators.required])
+    });
   }
 
   isLogged() {
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       this.localService.setJsonValue('loginPassword', this.loginForm.get('password').value);
       this.router.navigate(['/eei/main']);
     }).catch(err => {
-      this.alertService.alertError(err.message);
+      this.alertService.alertError(err.message.toString().replace('Firebase: ', '').replace(' (auth/', ' ').replace(').', ''));
     });
   }
 
@@ -53,5 +53,8 @@ export class LoginComponent implements OnInit {
     this.localService.clearToken();
     this.router.navigate(['/eei/register']);
   }
+
+  get user() { return this.loginForm.get('email'); }
+  get password() { return this.loginForm.get('password'); }
 
 }

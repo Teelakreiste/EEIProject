@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { AddressesService } from '../services/addresses.service';
 import { CompaniesService } from '../services/companies.service';
@@ -17,6 +17,12 @@ import { AlertService } from '../services/alert.service';
   styleUrls: ['./register-additional.component.css']
 })
 export class RegisterAdditionalComponent implements OnInit {
+  companyForm: FormGroup;
+
+  nitPattern = '^[0-9]*$';
+  phonePattern = /^(\+|\d)[0-9]{7,16}$/;
+  zipCodePattern = '^[0-9]*$';
+  
   constructor(public userService: UserService,
     private addressesService: AddressesService,
     private companiesService: CompaniesService,
@@ -24,22 +30,9 @@ export class RegisterAdditionalComponent implements OnInit {
     private router: Router,
     private localService: LocalService,
     private alertService: AlertService) { 
-    this.companyForm = this.formBuilder.group({
-      nit: '',
-      name: '',
-      email: '',
-      phone: '',
-      cellphone: '',
-      address: '',
-      address2: '',
-      city: '',
-      state: '',
-      zipCode: '',
-      country: ''
-   });
+    this.companyForm = this.createFormGroup();
   }
   
-  companyForm: FormGroup;
   ngOnInit(): void {
     if (this.getLocalStorage() == null) {
       this.router.navigate(['/eei/register']);
@@ -53,9 +46,25 @@ export class RegisterAdditionalComponent implements OnInit {
     }
   }
 
+  createFormGroup() {
+    return this.formBuilder.group({
+      nit: new FormControl(null, [Validators.required, Validators.pattern(this.nitPattern)]),
+      name: new FormControl(null, [Validators.required]),
+      email: new FormControl(null, [Validators.required]),
+      phone: new FormControl(null, [Validators.required, Validators.pattern(this.phonePattern)]),
+      cellphone: new FormControl(null, [Validators.pattern(this.phonePattern)]),
+      address: new FormControl(null, [Validators.required, Validators.minLength(10)]),
+      address2: new FormControl(null, []),
+      city: new FormControl(null, [Validators.required]),
+      state: new FormControl(null, [Validators.required]),
+      zipCode: new FormControl(null, [Validators.required, Validators.pattern(this.zipCodePattern)]),
+      country: new FormControl(null, [Validators.required])
+    });
+  }
+
   getLocalStorage() {
     // Get the user data from the local storage and set it in the form fields
-    const email = this.localService.getJsonValue('rEmail');
+    const email = this.localService.getSJsonValue('rEmail');
     return email;
   }
 
@@ -65,11 +74,11 @@ export class RegisterAdditionalComponent implements OnInit {
   }
 
   setBackupData() {
-    this.localService.setJsonValue('registerData', this.companyForm.value);
+    this.localService.setSJsonValue('registerData', this.companyForm.value);
   }
 
   getBackupData() {
-    return this.localService.getJsonValue('registerData');
+    return this.localService.getSJsonValue('registerData');
   }
 
   private getAdress() {
@@ -98,9 +107,26 @@ export class RegisterAdditionalComponent implements OnInit {
   }
 
   onSubmit() {
-    let address = this.getAdress();
-    let company = this.getCompany();
-    this.createUser(address, company);
+    if (this.companyForm.valid) {
+      if (this.checkEmailExist()) {
+        this.alertService.alertError('The email is already registered');
+      } else {
+        let address = this.getAdress();
+        let company = this.getCompany();
+        this.createUser(address, company);
+      }
+    } else {
+      this.alertService.alertError('please fill all the fields');
+    }
+  }
+
+  checkEmailExist() {
+    return this.userService.getUserByEmail(this.companyForm.get('email').value).then((res) => {
+      if (res != null) {
+        return true;
+      }
+      return false;
+    });
   }
 
   createUser(address: Address, company: Company) {
@@ -109,10 +135,10 @@ export class RegisterAdditionalComponent implements OnInit {
       this.addressesService.createAddress(address).then((res) => {
         company.codAddress = res.id;
         this.companiesService.updateCompany(address.codCompany, company).then();
-        this.userService.register(this.localService.getJsonValue('rEmail'), this.localService.getJsonValue('rPassword')).then();
-        this.alertService.alertSuccess('Registro exitoso', 'Se ha registrado correctamente');
+        this.userService.register(this.localService.getSJsonValue('rEmail'), this.localService.getSJsonValue('rPassword')).then();
+        this.alertService.alertSuccess('Successful registration','The user has been created successfully');
+        this.localService.clearSToken();
         this.router.navigate(['/eei/login']);
-        this.localService.clearToken();
       }).catch((err) => {
         this.alertService.alertError(err.message);
       });
@@ -121,4 +147,15 @@ export class RegisterAdditionalComponent implements OnInit {
     });
   }
 
+  get nit() { return this.companyForm.get('nit'); }
+  get name() { return this.companyForm.get('name'); }
+  get email() { return this.companyForm.get('email'); }
+  get phone() { return this.companyForm.get('phone'); }
+  get cellphone() { return this.companyForm.get('cellphone'); }
+  get address() { return this.companyForm.get('address'); }
+  get address2() { return this.companyForm.get('address2'); }
+  get city() { return this.companyForm.get('city'); }
+  get state() { return this.companyForm.get('state'); }
+  get zipCode() { return this.companyForm.get('zipCode'); }
+  get country() { return this.companyForm.get('country'); }
 }

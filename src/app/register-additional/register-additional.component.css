@@ -23,14 +23,13 @@ a:hover{
 }
 
 .cont {
-    display: flex;
+    display: block;
+	margin: 0 auto;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 .container {
-    width: 100vw;
-	height: 90vh;
 	justify-content: center;
 	display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -64,7 +63,6 @@ a:hover{
 .btn{
     display: block;
     margin: 0 auto;
-    width: 20%;
 	border-radius: 20px;
 	outline: none;
 	border: none;
@@ -80,4 +78,20 @@ a:hover{
 
 .btn:hover{
 	background-position: right;
+}
+
+.alert-danger {
+	color: #721c24;
+	background-color: #f8d7da;
+	border-color: #f5c6cb;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 10px 0;
+}
+
+.container-error-message {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
 }

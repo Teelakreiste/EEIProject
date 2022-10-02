@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { UserService } from '../services/user.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { LocalService } from '../services/local.service';
 import { AlertService } from '../services/alert.service';
@@ -14,45 +13,89 @@ import { AlertService } from '../services/alert.service';
 })
 
 export class RegisterComponent implements OnInit {
+
+  userForm: FormGroup;
+  emailPattern: any = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+  passwordPattern: any = /^(?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}$/;
+  
   constructor(
-    private userService: UserService,
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
     private router: Router,
     private localService: LocalService,
     private alertService: AlertService
   ) { 
-    this.userForm = this.formBuilder.group({
-      email: '',
-      password: '',
-      password2: ''
+    this.userForm = this.createFormGroup();
+  } 
+
+  ngOnInit(): void {
+    if (this.localService.getSJsonValue('rEmail') != null && this.localService.getSJsonValue('rPassword') != null) {
+      this.userForm.get('email').setValue(this.localService.getSJsonValue('rEmail'));
+      this.userForm.get('password').setValue(this.localService.getSJsonValue('rPassword'));
+    }
+  }
+
+  createFormGroup() {
+    return this.formBuilder.group({
+      email: new FormControl(null, [Validators.required, Validators.minLength(5), Validators.pattern(this.emailPattern)]),
+      password: new FormControl(null, [Validators.required, Validators.minLength(8), Validators.pattern(this.passwordPattern) , Validators.maxLength(20)]),
+      password2: new FormControl(null, [Validators.required])
+    },
+    {
+      validators: this.mustMatch('password', 'password2')
     });
   }
 
-  userForm: FormGroup;
-  
-  ngOnInit(): void {
-    if (this.localService.getJsonValue('rEmail') != null && this.localService.getJsonValue('rPassword') != null) {
-      this.userForm.get('email').setValue(this.localService.getJsonValue('rEmail'));
-      this.userForm.get('password').setValue(this.localService.getJsonValue('rPassword'));
+  mustMatch(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+      if(matchingControl.errors && !matchingControl.errors?.['mustMatch']) {
+        return;
+      }
+      if(control.value !== matchingControl.value) {
+        matchingControl.setErrors({ mustMatch: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
     }
   }
 
   onLogin() {
-    this.localService.clearToken();
+    this.localService.clearSToken();
     this.router.navigate(['/eei/login']);
   }
 
   onSubmit() {
-    //this.router.navigate(['/eei/register/register-additional']);
-    if (this.userForm.get('password').value != this.userForm.get('password2').value) {
-      this.alertService.alertError('Passwords do not match');
-    } else {
-      if (this.userForm.get('email').value != this.localService.getJsonValue('rEmail')) {
-        this.localService.clearToken();
-      }
-      this.localService.setJsonValue('rEmail', this.userForm.get('email').value);
-      this.localService.setJsonValue('rPassword', this.userForm.get('password').value);
+    if (this.userForm.valid) {
+      this.saveSesssionSEmail();
+      this.onResetForm();
       this.router.navigate(['/eei/register/additional']);
+    } else {
+      this.alertService.alertError('Invalid form');
     }
+  }
+
+  saveSesssionSEmail() {
+    if (this.userForm.get('email').value != this.localService.getSJsonValue('rEmail')) {
+      this.localService.clearSToken();
+    }
+    this.localService.setSJsonValue('rEmail', this.userForm.get('email').value);
+    this.localService.setSJsonValue('rPassword', this.userForm.get('password').value);
+  }
+
+  onResetForm() {
+    this.userForm.reset();
+  }
+
+  get email() {
+    return this.userForm.get('email');
+  }
+
+  get password() {
+    return this.userForm.get('password');
+  }
+
+  get password2() {
+    return this.userForm.get('password2');
   }
 }
