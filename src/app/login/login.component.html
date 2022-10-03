@@ -9,7 +9,7 @@
                     <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
                         <div class="mb-4">
                             <label for="user" class="form-label">Email</label>
-                            <input formControlName="email" type="text" class="form-control" id="user" name="usuario" placeholder="" required>
+                            <input formControlName="email" type="text" class="form-control" id="user" name="usuario">
                             <div class="alert-danger" *ngIf="user.invalid && (user.dirty || user.touched)">
                                 <div class="container-error-message" *ngIf="user.errors?.['required']">
                                     Email is required
@@ -19,13 +19,13 @@
                                 </div>
                             </div>
                             <label for="password" class="form-label">Password</label>
-                            <input formControlName="password" type="password" class="form-control" id="password" name="password" placeholder="" required>
+                            <input formControlName="password" type="password" class="form-control" id="password" name="password">
                             <div class="alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
                                 <div class="container-error-message">
                                     Password is required
                                 </div>
                             </div>
-                            <a id="pwd" href="#">Forgot password?</a>
+                            <a id="pwd" class="pr" (click)="onForgotPassword()">Forgot password?</a>
                         </div>
                         <input type="submit" class="btn btn-success" value="Sing In">
                     </form>

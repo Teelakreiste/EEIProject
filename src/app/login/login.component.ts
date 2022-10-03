@@ -13,6 +13,7 @@ import { UserService } from '../services/user.service';
 })
 export class LoginComponent implements OnInit {
   
+  fieldTextType: boolean;
   loginForm: FormGroup;
   emailPattern: any = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
   constructor(private userService: UserService, private router: Router,
@@ -52,6 +53,11 @@ export class LoginComponent implements OnInit {
   onRegister() {
     this.localService.clearToken();
     this.router.navigate(['/eei/register']);
+  }
+
+  onForgotPassword() {
+    this.localService.clearToken();
+    this.router.navigate(['/eei/forgot-password']);
   }
 
   get user() { return this.loginForm.get('email'); }

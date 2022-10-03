@@ -16,6 +16,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     RegisterAdditionalComponent,
-    MainComponent
+    MainComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AngularFirestoreModule,
     AngularFireAuthModule,
     ReactiveFormsModule, // <-- include ReactiveFormsModule in imports
-    FormsModule // <-- include FormsModule in
+    FormsModule, // <-- include FormsModule in imports
   ],
   providers: [],
   bootstrap: [AppComponent]

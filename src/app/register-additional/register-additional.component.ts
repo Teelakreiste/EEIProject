@@ -108,7 +108,7 @@ export class RegisterAdditionalComponent implements OnInit {
 
   onSubmit() {
     if (this.companyForm.valid) {
-      if (this.checkEmailExist()) {
+      if (this.userService.checkEmailExist(this.companyForm.get('email').value)) {
         this.alertService.alertError('The email is already registered');
       } else {
         let address = this.getAdress();
@@ -118,15 +118,6 @@ export class RegisterAdditionalComponent implements OnInit {
     } else {
       this.alertService.alertError('please fill all the fields');
     }
-  }
-
-  checkEmailExist() {
-    return this.userService.getUserByEmail(this.companyForm.get('email').value).then((res) => {
-      if (res != null) {
-        return true;
-      }
-      return false;
-    });
   }
 
   createUser(address: Address, company: Company) {
