@@ -1,14 +1,14 @@
-
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
 
         <a class="navbar-brand" href="#">FISHKITTEN</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class=" me-auto mb-2 mb-lg-0"></div>
+            <div class="me-auto mb-2 mb-lg-0"></div>
             <div class="me-auto mb-2 mb-lg-0">
                 <form class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -24,21 +24,23 @@
                 <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
             <div class="nav-item dropdown-mb">
-                <a class="nav-link" href="" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
                     <img class="img-profile" src="../../assets/imgMain/undraw_pic_profile_re_1tdc.svg" alt="">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" >Setting</a>
+                    <a class="dropdown-item">Setting</a>
                     <a class="dropdown-item" (click)="logout()">Logout</a>
                 </div>
             </div>
         </div>
         <div class="nav-item dropdown">
-            <a class="nav-link" href="" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
                 <img class="img-profile" src="../../assets/imgMain/undraw_pic_profile_re_1tdc.svg" alt="">
             </a>
             <div class="dropdown-menu dp" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" >Setting</a>
+                <a class="dropdown-item">Setting</a>
                 <a class="dropdown-item" (click)="logout()">Logout</a>
             </div>
         </div>
@@ -47,125 +49,13 @@
 <div class="container">
     <h3>PRODUCTS</h3>
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-3" *ngFor="let fish of products">
             <div class="card">
-                <img class="card-img-top" src="../../assets/imgMain/undraw_page_not_found_re_e9o6.svg" alt="Card image cap">
+                <img class="card-img-top" src="{{fish.image}}" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">Fish #1</h5>
+                    <h5 class="card-title">{{fish.name}}</h5>
                     <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Add</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="card">
-                <img class="card-img-top" src="../../assets/imgMain/undraw_page_not_found_re_e9o6.svg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Fish #2</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Add</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="card">
-                <img class="card-img-top" src="../../assets/imgMain/undraw_page_not_found_re_e9o6.svg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Fish #3</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Add</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="card">
-                <img class="card-img-top" src="../../assets/imgMain/undraw_page_not_found_re_e9o6.svg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Fish #4</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Add</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="card">
-                <img class="card-img-top" src="../../assets/imgMain/undraw_page_not_found_re_e9o6.svg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Fish #5</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Add</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="card">
-                <img class="card-img-top" src="../../assets/imgMain/undraw_page_not_found_re_e9o6.svg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Fish #6</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Add</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-2">
-            <div class="card">
-                <img class="card-img-top" src="../../assets/imgMain/undraw_page_not_found_re_e9o6.svg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Fish #7</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Add</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="card">
-                <img class="card-img-top" src="../../assets/imgMain/undraw_page_not_found_re_e9o6.svg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Fish #8</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Add</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="card">
-                <img class="card-img-top" src="../../assets/imgMain/undraw_page_not_found_re_e9o6.svg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Fish #9</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Add</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="card">
-                <img class="card-img-top" src="../../assets/imgMain/undraw_page_not_found_re_e9o6.svg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Fish #10</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Add</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="card">
-                <img class="card-img-top" src="../../assets/imgMain/undraw_page_not_found_re_e9o6.svg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Fish #11</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Add</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="card">
-                <img class="card-img-top" src="../../assets/imgMain/undraw_page_not_found_re_e9o6.svg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Fish #12</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary">Add</a>
+                    <a href="#" class="btn btn-primary">Show</a>
                 </div>
             </div>
         </div>

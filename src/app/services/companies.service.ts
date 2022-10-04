@@ -8,12 +8,12 @@ export class CompaniesService {
 
   constructor(private angularFirestore: AngularFirestore) { }
 
-  async getCompanies() {
-    return await this.angularFirestore.collection('companies').get();
+  getCompanies() {
+    return this.angularFirestore.collection('companies').snapshotChanges();
   }
 
-  async getCompany(id: string) {
-    return await this.angularFirestore.collection('companies').doc(id).get();
+  getCompany(id: string) {
+    return this.angularFirestore.collection('companies').doc(id).valueChanges();
   }
 
   async createCompany(company: any) {

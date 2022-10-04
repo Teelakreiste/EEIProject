@@ -25,7 +25,12 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "sweetalert2",
+              "crypto-js",
+              "secure-web-storage"
+           ]
           },
           "configurations": {
             "production": {

@@ -21,8 +21,6 @@ export class LocalService {
     return this.storageService.secureStorage.clear();
   }
 
-
-
   setSJsonValue(key: string, value: any) {
     this.storageService.secureSStorage.setItem(key, value);
   }

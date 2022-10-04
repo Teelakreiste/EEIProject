@@ -8,12 +8,12 @@ export class AddressesService {
 
   constructor(private angularFirestore: AngularFirestore) { }
 
-  async getAddresses() {
-    return await this.angularFirestore.collection('addresses').get();
+  getAddresses() {
+    return this.angularFirestore.collection('addresses').snapshotChanges();
   }
 
-  async getAddress(id: string) {
-    return await this.angularFirestore.collection('addresses').doc(id).get();
+  getAddress(id: string) {
+    return this.angularFirestore.collection('addresses').doc(id).valueChanges();
   }
 
   async createAddress(address: any) {

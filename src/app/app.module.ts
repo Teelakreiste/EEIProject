@@ -14,9 +14,13 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AddFishComponent } from './management/add-fish/add-fish.component';
+import { UpdateFishComponent } from './management/update-fish/update-fish.component';
+import { ShowFishComponent } from './management/show-fish/show-fish.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,10 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     RegisterComponent,
     RegisterAdditionalComponent,
     MainComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    AddFishComponent,
+    UpdateFishComponent,
+    ShowFishComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +42,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     ReactiveFormsModule, // <-- include ReactiveFormsModule in imports
     FormsModule, // <-- include FormsModule in imports
   ],

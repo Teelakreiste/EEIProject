@@ -1,0 +1,124 @@
+
+h1 {
+    text-align: center;
+    font-weight: bold;
+	text-transform: uppercase;
+    /*margin: 15px 0;*/
+    margin-bottom: 25px;
+	color: #37329e;
+}
+
+.container-main {
+    display: block;
+	margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+	justify-content: center;
+	display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 0rem;
+	padding:0 2rem;
+}
+
+.img-file {
+    width: 350px;
+    height: 250px;
+    border-radius: 5px;
+}
+
+.header {
+    width: 100px;
+    height: auto;
+    border-radius: 20px;
+    background-color: rgba(55, 50, 158, 0.1);
+    text-align: center;
+    margin: 15px 0;
+    margin-bottom: 25px;
+    color: #37329e;
+}
+
+.img-background {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: auto;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-top: -50px;
+    border: 5px solid #fff;
+}
+
+.form-group {
+    padding: 10px 0;
+}
+
+.form-label {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #37329e;
+}
+
+.form-control {
+    padding: 10px 0;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: 16px;
+    box-shadow: 1px 1px 5px #37329e;
+    border: none;
+    border: 0 solid transparent;
+    transition: .3s ease all;
+}
+
+.form-control:focus {
+    border: 2px solid #6C63FF;
+    outline: none;
+}
+
+.btn{
+    display: block;
+    margin: 0 auto;
+	border-radius: 10px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #6C63FF, #37329e, #6C63FF);
+	background-size: 200%;
+	font-size: 1.2rem;
+	color: #fff;
+	font-family: 'Roboto', sans-serif;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: .5s;
+}
+
+.alert-danger {
+	color: #721c24;
+	background-color: #f8d7da;
+	border-color: #f5c6cb;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 10px 0;
+}
+
+.container-error-message {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+
+@media screen and (max-width: 770px){
+    .header {
+        display: none;
+    }
+}

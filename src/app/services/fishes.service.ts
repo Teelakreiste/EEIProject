@@ -8,12 +8,22 @@ export class FishesService {
 
   constructor(private angularFirestore: AngularFirestore) { }
 
-  async getFishes() {
-    return await this.angularFirestore.collection('fishes').get();
+  getCategories() {
+    let catergories = [
+      'Sea',
+      'River',
+      'Fish farm',
+      'Seafood'
+    ];
+    return catergories;
   }
 
-  async getFish(id: string) {
-    return await this.angularFirestore.collection('fishes').doc(id).get();
+  getFishes() {
+    return this.angularFirestore.collection('fishes').snapshotChanges();
+  }
+
+  getFish(id: string) {
+    return this.angularFirestore.collection('fishes').doc(id).valueChanges();
   }
 
   async createFish(fish: any) {
