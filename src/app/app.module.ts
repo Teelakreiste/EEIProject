@@ -19,8 +19,6 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AddFishComponent } from './management/add-fish/add-fish.component';
-import { UpdateFishComponent } from './management/update-fish/update-fish.component';
-import { ShowFishComponent } from './management/show-fish/show-fish.component';
 
 @NgModule({
   declarations: [
@@ -30,9 +28,7 @@ import { ShowFishComponent } from './management/show-fish/show-fish.component';
     RegisterAdditionalComponent,
     MainComponent,
     ForgotPasswordComponent,
-    AddFishComponent,
-    UpdateFishComponent,
-    ShowFishComponent
+    AddFishComponent
   ],
   imports: [
     BrowserModule,
