@@ -20,6 +20,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AddFishComponent } from './management/add-fish/add-fish.component';
 
+import { SwiperModule } from 'swiper/angular';
+import { ProductsComponent } from './products/products.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +31,8 @@ import { AddFishComponent } from './management/add-fish/add-fish.component';
     RegisterAdditionalComponent,
     MainComponent,
     ForgotPasswordComponent,
-    AddFishComponent
+    AddFishComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +45,7 @@ import { AddFishComponent } from './management/add-fish/add-fish.component';
     AngularFireStorageModule,
     ReactiveFormsModule, // <-- include ReactiveFormsModule in imports
     FormsModule, // <-- include FormsModule in imports
+    SwiperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

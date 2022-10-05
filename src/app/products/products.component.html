@@ -1,0 +1,13 @@
+<swiper [slidesPerView]="element" [spaceBetween]="15" [navigation]="navigation" [loop]="false" [autoplay]="true">
+    <ng-template class="div-slide" swiperSlide *ngFor="let fish of products">
+        <div class="card">
+            <img class="card-img-top" src="{{fish.image}}">
+            <div class="card-body">
+                <h5 class="card-title">{{fish.name}}</h5>
+                <p id="c-text" class="card-text">Price: $<strong>{{fish.price}}</strong> USD.</p>
+                <p id="c-text-two" class="card-text">Stock: <strong>{{fish.quantity}}</strong> uds.</p>
+                <a href="#" class="btn btn-primary">Add to cart</a>
+            </div>
+        </div>
+    </ng-template>
+</swiper>

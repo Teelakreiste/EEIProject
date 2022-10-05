@@ -14,7 +14,6 @@ import { FishesService } from '../services/fishes.service';
 export class MainComponent implements OnInit {
 
   title = 'Welcome to EEI';
-  products: Fish[];
   categories;
 
   constructor(private userService: UserService, 
@@ -25,18 +24,6 @@ export class MainComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.getProducts();
-  }
-
-  getProducts() {
-    this.fishesService.getFishes().subscribe(fishes => {
-      this.products = fishes.map(post => {
-        return {
-          id: post.payload.doc.id,
-          ...post.payload.doc.data() as Fish
-        }
-      })
-    }); 
   }
   
   logout() {
