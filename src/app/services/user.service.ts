@@ -45,12 +45,5 @@ export class UserService {
   forgotPassword(email: string) {
     return sendPasswordResetEmail(this.auth, email);
   }
-
-  async checkEmailExist(email: string) {
-    const res = await this.getUserByEmail(email);
-    if (res != null) {
-      return true;
-    }
-    return false;
-  }
+  
 }

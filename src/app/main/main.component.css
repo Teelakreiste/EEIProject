@@ -95,7 +95,8 @@ h3 {
     border: 1px solid transparent;
     border-radius: 15px;
     line-height: 45px;
-    padding: 0 40px 0 10px;
+    width: 500px;
+    padding: 0 5px 0 10px;
     transition: .3s ease all;
     color: #928c8c;
 }
