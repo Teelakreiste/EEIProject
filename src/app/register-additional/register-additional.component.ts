@@ -108,13 +108,9 @@ export class RegisterAdditionalComponent implements OnInit {
 
   onSubmit() {
     if (this.companyForm.valid) {
-      // if (this.userService.checkEmailExist(this.companyForm.get('email').value)) {
-      //   this.alertService.alertError('The email is already registered');
-      // } else {
         let address = this.getAdress();
         let company = this.getCompany();
         this.createUser(address, company);
-      // }
     } else {
       this.alertService.alertError('please fill all the fields');
     }
@@ -128,6 +124,7 @@ export class RegisterAdditionalComponent implements OnInit {
         this.companiesService.updateCompany(address.codCompany, company).then();
         this.userService.register(this.localService.getSJsonValue('rEmail'), this.localService.getSJsonValue('rPassword')).then();
         this.alertService.alertSuccess('Successful registration','The user has been created successfully');
+        this.localService.clearToken();
         this.localService.clearSToken();
         this.router.navigate(['/eei/login']);
       }).catch((err) => {

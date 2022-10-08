@@ -38,18 +38,18 @@ a:hover{
 }
 
 .form-label {
-    color: #928c8c;
-    transition: .3s;
-}
-
-.form-label:hover {
-    color: #6C63FF;
+    color: #37329e;
+    margin: 0 auto;
+    font-size: 12px;
+    font-weight: lighter;
 }
 
 .form-control {
     padding: 10px 0;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
+    line-height: 45px;
+    padding: 0 30px 0 10px;
     box-shadow: 1px 1px 5px #37329e;
     border: 0 solid transparent;
     transition: .3s ease all;
@@ -63,7 +63,9 @@ a:hover{
 .btn{
     display: block;
     margin: 0 auto;
-	border-radius: 20px;
+    margin-top: 40px;
+    margin-bottom: 15px;
+	border-radius: 15px;
 	outline: none;
 	border: none;
 	background-image: linear-gradient(to right, #6C63FF, #37329e, #6C63FF);
@@ -72,8 +74,7 @@ a:hover{
 	color: #fff;
 	font-family: 'Roboto', sans-serif;
 	text-transform: uppercase;
-	cursor: pointer;
-	transition: .5s;
+	transition: all .5s ease;
 }
 
 .btn:hover{

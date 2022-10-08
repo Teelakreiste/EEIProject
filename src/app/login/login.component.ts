@@ -60,6 +60,10 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/eei/forgot-password']);
   }
 
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
+
   get user() { return this.loginForm.get('email'); }
   get password() { return this.loginForm.get('password'); }
 

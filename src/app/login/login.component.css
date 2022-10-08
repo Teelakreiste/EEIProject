@@ -1,4 +1,4 @@
-*{
+* {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
@@ -6,7 +6,7 @@
 
 h2 {
 	font-size: 2.9rem;
-    font-weight: bold;
+	font-weight: bold;
 	text-transform: uppercase;
 	margin: 15px 0;
 	color: #37329e;
@@ -23,34 +23,34 @@ h2 {
 }
 
 a {
-    text-decoration: none;
-    color: #999;
+	text-decoration: none;
+	color: #999;
 }
 
-#pwd{
+#pwd {
 	display: block;
 	text-align: right;
 	font-size: 0.9rem;
 	transition: .3s;
 }
 
-a:hover{
+a:hover {
 	color: #6C63FF;
 	cursor: pointer;
 }
 
 .div-register {
-    padding-top: 30px;
+	padding-top: 30px;
 }
 
 .div-register p {
-    color: #6C63FF;
-    font-weight: 100;
-    margin: 0;
-    padding: 8px;
-    border-radius: 20px;
-    height: 40px;
-    background-color: rgba(133, 107, 247, 0.1);
+	color: #6C63FF;
+	font-weight: 100;
+	margin: 0;
+	padding: 8px;
+	border-radius: 20px;
+	height: 40px;
+	background-color: rgba(133, 107, 247, 0.1);
 }
 
 .pr {
@@ -58,7 +58,7 @@ a:hover{
 	font-size: 1rem;
 }
 
-.mid-bg{
+.mid-bg {
 	position: fixed;
 	height: 100%;
 	/*width: 50%;*/
@@ -76,7 +76,7 @@ a:hover{
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-gap: 7rem;
-	padding:0 2rem;
+	padding: 0 2rem;
 }
 
 .login-container {
@@ -91,44 +91,55 @@ a:hover{
 }
 
 .form {
-    width: 100%;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
+	width: 100%;
+	margin: 0 auto;
+	justify-content: center;
+	align-items: center;
 }
 
 .form-label {
-    color: #928c8c;
-    padding: 5px 0;
-    display: block;
-    cursor: pointer;
-    transition: .3s;
-    text-align: center;
+	color: #928c8c;
+	padding: 5px 0;
+	display: block;
+	cursor: pointer;
+	transition: .3s;
+	text-align: center;
 }
 
 .form-label:hover {
-    padding: 6px 0;
-    color: #6C63FF;
+	padding: 6px 0;
+	color: #6C63FF;
 }
 
 .form-control {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    box-shadow: 1px 1px 5px #37329e;
-    border: 2px solid transparent;
-    border-radius: 15px;
-    line-height: 45px;
-    padding: 0 40px 0 10px;
-    transition: .3s ease all;
-    color: #928c8c;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	box-shadow: 1px 1px 5px #37329e;
+	border: 2px solid transparent;
+	border-radius: 15px;
+	line-height: 45px;
+	padding: 0 30px 0 10px;
+	transition: .3s ease all;
+	color: #928c8c;
 }
 
 .form-control:focus {
-    border: 3px solid #6C63FF;
-    outline: none;
+	border: 3px solid #6C63FF;
+	outline: none;
 }
 
-.btn{
+.field-icon {
+	float: right;
+	margin-left: -30px;
+	margin-top: -30px;
+	margin-right: 9px;
+	font-size: small;
+	position: relative;
+	color: #6C63FF;
+	z-index: 2;
+}
+
+.btn {
 	width: 70%;
 	height: 50px;
 	border-radius: 20px;
@@ -144,7 +155,7 @@ a:hover{
 	transition: .5s;
 }
 
-.btn:hover{
+.btn:hover {
 	background-position: right;
 }
 
@@ -164,37 +175,37 @@ a:hover{
 	height: 100%;
 }
 
-@media screen and (max-width: 1050px){
-	.container{
+@media screen and (max-width: 1050px) {
+	.container {
 		grid-gap: 5rem;
 	}
 }
 
-@media screen and (max-width: 1000px){
-	form{
+@media screen and (max-width: 1000px) {
+	form {
 		width: 290px;
 	}
 
-	.login-content h2{
-        font-size: 2.4rem;
-        margin: 8px 0;
+	.login-content h2 {
+		font-size: 2.4rem;
+		margin: 8px 0;
 	}
 
-	.img img{
+	.img img {
 		width: 400px;
 	}
 }
 
-@media screen and (max-width: 900px){
-	.container{
+@media screen and (max-width: 900px) {
+	.container {
 		grid-template-columns: 1fr;
 	}
 
-	.img{
+	.img {
 		display: none;
 	}
 
-	.mid-bg{
+	.mid-bg {
 		display: none;
 	}
 }

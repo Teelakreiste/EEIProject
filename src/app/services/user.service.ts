@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, 
-  sendPasswordResetEmail, sendEmailVerification, fetchSignInMethodsForEmail } from '@angular/fire/auth';
+  sendPasswordResetEmail, sendEmailVerification, updatePassword, updateEmail } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +21,6 @@ export class UserService {
     this.auth.signOut();
   }
 
-  resetPassword(email: string) {
-    return sendPasswordResetEmail(this.auth, email);
-  }
-
   verifyEmail() {
     return sendEmailVerification(this.auth.currentUser);
   }
@@ -38,12 +34,15 @@ export class UserService {
     return this.auth.currentUser.uid;
   }
 
-  getUserByEmail(email: string) {
-    return fetchSignInMethodsForEmail(this.auth, email);
-  }
-  
   forgotPassword(email: string) {
     return sendPasswordResetEmail(this.auth, email);
   }
-  
+
+  changePassword(newPassword: string) {
+    return updatePassword(this.auth.currentUser, newPassword);
+  }
+
+  changeEmail(newEmail: string) {
+    return updateEmail(this.auth.currentUser, newEmail);
+  }
 }

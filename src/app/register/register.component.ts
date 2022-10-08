@@ -17,7 +17,9 @@ export class RegisterComponent implements OnInit {
   userForm: FormGroup;
   emailPattern: any = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
   passwordPattern: any = /^(?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}$/;
-  
+  fieldTextType: boolean = false;
+  repeatFieldTextType: boolean = false;
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -85,6 +87,14 @@ export class RegisterComponent implements OnInit {
 
   onResetForm() {
     this.userForm.reset();
+  }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
+
+  repeatToggleFieldTextType() {
+    this.repeatFieldTextType = !this.repeatFieldTextType;
   }
 
   get email() {

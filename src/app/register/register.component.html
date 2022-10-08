@@ -19,7 +19,8 @@
                                 </div>
                             </div>
                             <label for="contra" class="form-label">Password</label>
-                            <input formControlName="password" type="password" class="form-control" id="password" name="password">
+                            <input formControlName="password" [type]="fieldTextType ? 'text' : 'password'" class="form-control" id="password" name="password">
+                            <span (click)="toggleFieldTextType()" *ngIf="password.value != null && password.value != ''" [class]="(!fieldTextType ?'field-icon fa-solid fa-eye':'field-icon fa-solid fa-eye-slash')"></span>
                             <div class="alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
                                 <div class="container-error-message" *ngIf="password.errors?.['required'] || password.errors?.['minlength']">
                                     Password must contain at least 8 characters.
@@ -32,7 +33,8 @@
                                 </div>
                             </div>
                             <label for="contra" class="form-label">Confirm Password</label>
-                            <input formControlName="password2" type="password" class="form-control" id="password2" name="password2">
+                            <input formControlName="password2" [type]="repeatFieldTextType ? 'text' : 'password'" class="form-control" id="password2" name="password2">
+                            <span (click)="repeatToggleFieldTextType()" *ngIf="password2.value != null && password2.value != ''" [class]="(!repeatFieldTextType ?'field-icon fa-solid fa-eye':'field-icon fa-solid fa-eye-slash')"></span>
                             <div class="alert-danger" *ngIf="password2.invalid && (password2.dirty || password2.touched)">
                                 <div class="container-error-message" *ngIf="password2.errors?.['required']">
                                     Confirm Password is required
