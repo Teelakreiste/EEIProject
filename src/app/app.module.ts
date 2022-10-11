@@ -26,6 +26,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { UpdateFishComponent } from './management/update-fish/update-fish.component';
 import { ViewInfoProductComponent } from './view-info-product/view-info-product.component';
+import { BillingComponent } from './billing/billing.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ViewInfoProductComponent } from './view-info-product/view-info-product.
     ProductsComponent,
     HeaderComponent,
     FooterComponent,
-    ViewInfoProductComponent
+    ViewInfoProductComponent,
+    BillingComponent
   ],
   imports: [
     BrowserModule,
