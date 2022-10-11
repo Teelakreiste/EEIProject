@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AlertService } from 'src/app/services/alert.service';
 import { FishesService } from 'src/app/services/fishes.service';
 import { finalize } from 'rxjs/operators';
+import { LocalService } from 'src/app/services/local.service';
 
 @Component({
   selector: 'app-add-fish',
@@ -25,12 +26,16 @@ export class AddFishComponent implements OnInit {
     private fishService: FishesService,
     private router: Router,
     private alertService: AlertService,
+    private localService: LocalService,
     private angularFireStorage: AngularFireStorage) { 
     this.addFishForm = this.createFormGroup();
     this.categories = this.fishService.getCategories();
   }
 
   ngOnInit(): void {
+    if (this.localService.getJsonValue('role') != 'admin') {
+      this.router.navigate(['/eei/main']);
+    }
     this.resetForm();
   }
 
@@ -90,6 +95,10 @@ export class AddFishComponent implements OnInit {
     this.imgSrc = '../../../assets/imgManagement/undraw_photograph_re_up3b.svg';
     this.selectedImage = null;
     this.index = 0;
+  }
+
+  onBack() {
+    this.router.navigate(['/eei/main']);
   }
 
   get name() { return this.addFishForm.get('name'); }

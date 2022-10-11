@@ -8,6 +8,11 @@ h1 {
 	color: #37329e;
 }
 
+a:hover{
+    color: #6C63FF;
+    cursor: pointer;
+}
+
 .container-main {
     display: block;
 	margin: 0 auto;
@@ -120,5 +125,12 @@ h1 {
 @media screen and (max-width: 770px){
     .header {
         display: none;
+    }
+}
+
+@media screen and (max-width: 910px){
+    .img-file {
+        width: 300px;
+        height: 200px;
     }
 }

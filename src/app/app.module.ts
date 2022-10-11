@@ -24,6 +24,7 @@ import { SwiperModule } from 'swiper/angular';
 import { ProductsComponent } from './products/products.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { UpdateFishComponent } from './management/update-fish/update-fish.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { FooterComponent } from './footer/footer.component';
     MainComponent,
     ForgotPasswordComponent,
     AddFishComponent,
+    UpdateFishComponent,
     ProductsComponent,
     HeaderComponent,
     FooterComponent

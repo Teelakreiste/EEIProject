@@ -110,6 +110,7 @@ export class ProductsComponent implements OnInit {
   }
 
   updateProduct(id: string) {
+    this.router.navigate(['/eei/management/update-fish/' + id]);
   }
 
   deleteProduct(id: string) {
