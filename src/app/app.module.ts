@@ -22,6 +22,8 @@ import { AddFishComponent } from './management/add-fish/add-fish.component';
 
 import { SwiperModule } from 'swiper/angular';
 import { ProductsComponent } from './products/products.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ProductsComponent } from './products/products.component';
     MainComponent,
     ForgotPasswordComponent,
     AddFishComponent,
-    ProductsComponent
+    ProductsComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

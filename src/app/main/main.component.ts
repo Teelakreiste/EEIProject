@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LocalService } from '../services/local.service';
-import { UserService } from '../services/user.service';
-
-import { Fish } from '../models/fish.model';
-import { FishesService } from '../services/fishes.service';
 
 @Component({
   selector: 'app-main',
@@ -14,26 +9,10 @@ import { FishesService } from '../services/fishes.service';
 export class MainComponent implements OnInit {
 
   title = 'Welcome to EEI';
-  categories;
 
-  constructor(private userService: UserService, 
-    private router: Router,
-    private localService: LocalService,
-    private fishesService: FishesService) { 
-      this.categories = this.fishesService.getCategories();
+  constructor(private router: Router) { 
     }
 
   ngOnInit(): void {
-  }
-  
-  logout() {
-    this.userService.logout();
-    this.localService.clearToken();
-    this.refesh();
-    this.router.navigate(['/eei/login']);
-  }
-
-  refesh() {
-    window.location.reload();
   }
 }
