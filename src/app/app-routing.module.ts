@@ -9,6 +9,7 @@ import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angula
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AddFishComponent } from './management/add-fish/add-fish.component';
 import { UpdateFishComponent } from './management/update-fish/update-fish.component';
+import { ViewInfoProductComponent } from './view-info-product/view-info-product.component';
 
 const routes: Routes = [
   { path: 'eei/main', component: MainComponent, ...canActivate(() => redirectUnauthorizedTo(['/eei/login'])) },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'eei/forgot-password', component: ForgotPasswordComponent, ...canActivate(() => redirectLoggedInTo(['/eei/main'])) },
   { path: 'eei/management/add-fish', component: AddFishComponent, ...canActivate(() => redirectUnauthorizedTo(['/eei/login'])) },
   { path: 'eei/management/update-fish/:id', component: UpdateFishComponent, ...canActivate(() => redirectUnauthorizedTo(['/eei/login'])) },
+  { path: 'eei/info/product/:id', component: ViewInfoProductComponent, ...canActivate(() => redirectUnauthorizedTo(['/eei/login'])) },
   { path: '', redirectTo: '/eei/main', pathMatch: 'full' },
   { path: '**', redirectTo: '/eei/login', pathMatch: 'full' }
 ];

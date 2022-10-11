@@ -25,6 +25,7 @@ import { ProductsComponent } from './products/products.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { UpdateFishComponent } from './management/update-fish/update-fish.component';
+import { ViewInfoProductComponent } from './view-info-product/view-info-product.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { UpdateFishComponent } from './management/update-fish/update-fish.compon
     UpdateFishComponent,
     ProductsComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ViewInfoProductComponent
   ],
   imports: [
     BrowserModule,

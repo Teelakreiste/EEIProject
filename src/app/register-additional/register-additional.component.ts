@@ -122,17 +122,21 @@ export class RegisterAdditionalComponent implements OnInit {
       this.addressesService.createAddress(address).then((res) => {
         company.codAddress = res.id;
         this.companiesService.updateCompany(address.codCompany, company).then();
-        this.userService.register(this.localService.getSJsonValue('rEmail'), this.localService.getSJsonValue('rPassword')).then();
-        this.alertService.alertSuccess('Successful registration','The user has been created successfully');
-        this.localService.clearToken();
-        this.localService.clearSToken();
-        this.router.navigate(['/eei/login']);
+        this.createProfile();
       }).catch((err) => {
         this.alertService.alertError(err.message);
       });
     }).catch((err) => {
       this.alertService.alertError(err.message);
     });
+  }
+
+  createProfile() {
+    this.userService.register(this.localService.getSJsonValue('rEmail'), this.localService.getSJsonValue('rPassword')).then();
+    this.alertService.alertSuccess('Successful registration','The user has been created successfully');
+    this.localService.clearToken();
+    this.localService.clearSToken();
+    this.router.navigate(['/eei/login']);
   }
 
   get nit() { return this.companyForm.get('nit'); }

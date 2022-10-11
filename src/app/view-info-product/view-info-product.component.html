@@ -1,0 +1,33 @@
+<app-header></app-header>
+<div class="container">
+
+    <!-- Left Column / Headphones Image -->
+    <div class="left-column">
+        <img src="{{products.image}}">
+    </div>
+
+    <!-- Right Column -->
+    <div class="right-column">
+        <!-- Product Description -->
+        <div class="product-description">
+            <span>{{products.category}}</span>
+            <h1>{{products.name}}</h1>
+            <p>{{products.description}}</p>
+        </div>
+
+        <!-- Product Configuration -->
+        <div class="product-configuration">
+            <!-- Product Color -->
+            <div class="product-info">
+                <span>Stock: <strong>{{products.quantity}}</strong> uds<br></span>
+                <span>Qty: <strong>{{qty}}</strong> uds</span>
+            </div>
+        </div>
+
+        <!-- Product Pricing -->
+        <div class="product-price">
+            <span>{{products.price}}$</span>
+            <a (click)="addToCart(products)" class="cart-btn">Add to cart</a>
+        </div>
+    </div>
+</div>
