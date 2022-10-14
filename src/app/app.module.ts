@@ -22,6 +22,12 @@ import { AddFishComponent } from './management/add-fish/add-fish.component';
 
 import { SwiperModule } from 'swiper/angular';
 import { ProductsComponent } from './products/products.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { UpdateFishComponent } from './management/update-fish/update-fish.component';
+import { BillingComponent } from './billing/billing.component';
+import { ViewInfoProductComponent } from './view-info-product/view-info-product.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +38,13 @@ import { ProductsComponent } from './products/products.component';
     MainComponent,
     ForgotPasswordComponent,
     AddFishComponent,
-    ProductsComponent
+    ProductsComponent,
+    HeaderComponent,
+    FooterComponent,
+    UpdateFishComponent,
+    BillingComponent,
+    ViewInfoProductComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

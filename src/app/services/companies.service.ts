@@ -16,6 +16,10 @@ export class CompaniesService {
     return this.angularFirestore.collection('companies').doc(id).valueChanges();
   }
 
+  getCompanyByEmail(email: string) {
+    return this.angularFirestore.collection('companies', ref => ref.where('email', '==', email)).snapshotChanges();
+  }
+
   async createCompany(company: any) {
     return await this.angularFirestore.collection('companies').add(company);
   }

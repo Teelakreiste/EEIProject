@@ -1,13 +1,13 @@
 <div class="container bg-white rounded-5 shadow-5-strong p-5">
-        <a (click)="onBack()"><i class="fa-solid fa-arrow-left"></i></a>
-        <img class="img-background" src="../../../assets/imgManagement/undraw_add_files_re_v09g.svg" alt="">
-        <h1>ADD FISH</h1>
+    <a (click)="onBack()"><i class="fa-solid fa-arrow-left"></i></a>
+    <img class="img-background" src="../../../assets/imgManagement/undraw_update_re_swkp.svg" alt="">
+    <h1>UPDATE FISH</h1>
     <div class="row justify-content-center">
         <div class="header">
             <img class="avatar" src="../../assets/imgLogin/undraw_fish_bowl_uu88.svg">
         </div>
         <div class="col-md-6">
-            <form [formGroup]="addFishForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="updateFishForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label class="form-label" for="name">Name</label>
                     <input type="text" class="form-control" formControlName="name" />
@@ -15,7 +15,8 @@
                         <div class="container-error-message" *ngIf="name.errors?.['required']">
                             Name is required
                         </div>
-                        <div class="container-error-message" *ngIf="(name.dirty || name.touched) && name.invalid && name.errors?.['pattern']">
+                        <div class="container-error-message"
+                            *ngIf="(name.dirty || name.touched) && name.invalid && name.errors?.['pattern']">
                             Name is not valid
                         </div>
                         <div class="container-error-message" *ngIf="name.errors?.['minlength']">
@@ -63,7 +64,8 @@
                         <div class="container-error-message" *ngIf="price.errors?.['required']">
                             Price is required
                         </div>
-                        <div class="container-error-message" *ngIf="(price.dirty || price.touched) && price.invalid && price.errors?.['pattern']">
+                        <div class="container-error-message"
+                            *ngIf="(price.dirty || price.touched) && price.invalid && price.errors?.['pattern']">
                             Price is not valid
                         </div>
                         <div class="container-error-message" *ngIf="price.errors?.['min']">
@@ -74,7 +76,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label class="form-label" for="quantity">Quantity</label>
                     <input type="number" class="form-control" formControlName="quantity" />
@@ -82,7 +84,8 @@
                         <div class="container-error-message" *ngIf="quantity.errors?.['required']">
                             Quantity is required
                         </div>
-                        <div class="container-error-message" *ngIf="(quantity.dirty || quantity.touched) && quantity.invalid && quantity.errors?.['pattern']">
+                        <div class="container-error-message"
+                            *ngIf="(quantity.dirty || quantity.touched) && quantity.invalid && quantity.errors?.['pattern']">
                             Quantity is not valid
                         </div>
                         <div class="container-error-message" *ngIf="quantity.errors?.['min']">
@@ -99,7 +102,8 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="image"></label>
-                    <input type="file" accept="image/*" class="form-control" #fileUploader formControlName="image" (change)="showPreview($event)">
+                    <input type="file" accept="image/*" class="form-control" #fileUploader formControlName="image"
+                        (change)="showPreview($event)">
                     <div class="alert-danger" *ngIf="image.invalid && (image.dirty || image.touched)">
                         <div class="container-error-message" *ngIf="image.errors?.['required']">
                             Image is required
@@ -109,12 +113,13 @@
 
                 <div class="form-group">
                     <div class="form-check form-switch">
-                        <input class="form-check-input form-label" type="checkbox" id="flexSwitchCheckChecked" formControlName="available" checked>
+                        <input class="form-check-input form-label" type="checkbox" id="flexSwitchCheckChecked"
+                            formControlName="available" checked>
                         <label class="form-check-label" for="flexSwitchCheckChecked">Available</label>
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary" [disabled]="!addFishForm.valid">Submit</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!updateFishForm.valid">Submit</button>
             </form>
         </div>
         <div class="header">

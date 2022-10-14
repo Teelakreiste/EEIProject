@@ -1,0 +1,75 @@
+<div class="invoice-box">
+    <table cellpadding="0" cellspacing="0">
+        <a (click)="onBack()"><i class="fa-solid fa-arrow-left"></i></a>
+        <tr class="top">
+            <td colspan="2">
+                <table>
+                    <tr>
+                        <td class="title">
+                            <img class="logo" src="../../assets/icon/fish.ico" />
+                        </td>
+
+                        <td>
+                            Invoice #: 123<br />
+                            Created: {{todayNow}}<br />
+                            Due: {{todayNext}}
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr class="information">
+            <td colspan="2">
+                <table>
+                    <tr>
+                        <td>
+                            Sparksuite, Inc.<br />
+                            12345 Sunny Road<br />
+                            Sunnyville, CA 12345
+                        </td>
+
+                        <td>
+                            Acme Corp.<br />
+                            John Doe<br />
+                            {{getEmail()}}
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr class="heading">
+            <td>Payment Method</td>
+
+            <td>Check #</td>
+        </tr>
+
+        <tr class="details">
+            <td>Check</td>
+
+            <td>9999999</td>
+        </tr>
+
+        <tr class="heading">
+            <td>Item<span class="space">Qty</span></td>
+
+            <td>Price</td>
+        </tr>
+
+        <tr class="item" *ngFor="let products of cartItems">
+            <td>{{products.fish.name}}<span class="space">{{products.quantity}}</span></td>
+
+            <td>${{products.priceTotal}}</td>
+        </tr>
+
+        <tr class="item last">
+        </tr>
+
+        <tr class="total">
+            <td></td>
+
+            <td>Total: ${{grandTotal}}</td>
+        </tr>
+    </table>
+</div>

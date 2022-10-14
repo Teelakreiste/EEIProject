@@ -8,6 +8,10 @@ import { MainComponent } from './main/main.component';
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AddFishComponent } from './management/add-fish/add-fish.component';
+import { UpdateFishComponent } from './management/update-fish/update-fish.component';
+import { BillingComponent } from './billing/billing.component';
+import { ViewInfoProductComponent } from './view-info-product/view-info-product.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   { path: 'eei/main', component: MainComponent, ...canActivate(() => redirectUnauthorizedTo(['/eei/login'])) },
@@ -16,6 +20,10 @@ const routes: Routes = [
   { path: 'eei/register/additional', component: RegisterAdditionalComponent, ...canActivate(() => redirectLoggedInTo(['/eei/main'])) },
   { path: 'eei/forgot-password', component: ForgotPasswordComponent, ...canActivate(() => redirectLoggedInTo(['/eei/main'])) },
   { path: 'eei/management/add-fish', component: AddFishComponent, ...canActivate(() => redirectUnauthorizedTo(['/eei/login'])) },
+  { path: 'eei/management/update-fish/:id', component: UpdateFishComponent, ...canActivate(() => redirectUnauthorizedTo(['/eei/login'])) },
+  { path: 'eei/info/product/:id', component: ViewInfoProductComponent, ...canActivate(() => redirectUnauthorizedTo(['/eei/login']))},
+  { path: 'eei/payment/billing', component: BillingComponent, ...canActivate(() => redirectUnauthorizedTo(['/eei/login'])) },
+  { path: 'eei/show/cart', component: CartComponent, ...canActivate(() => redirectUnauthorizedTo(['/eei/login'])) },
   { path: '', redirectTo: '/eei/main', pathMatch: 'full' },
   { path: '**', redirectTo: '/eei/login', pathMatch: 'full' }
 ];

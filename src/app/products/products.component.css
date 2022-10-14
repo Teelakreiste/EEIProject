@@ -91,3 +91,97 @@
 .btn:hover {
     background-position: right;
 }
+
+
+.title-admin-add {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #37329e;
+    background-color: #e6e6e6;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.admin-add {
+    width: 300px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.btn-admin-add {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+}
+
+.btn-admin-add:hover {
+    color: #fff;
+}
+
+.btn-admin-edit {
+    margin-left: 5px;
+    background: none;
+    border: 2px solid #023888;
+    color: #023888;
+}
+
+.btn-admin-edit:hover {
+    background: #023888;
+    color: #fff;
+}
+
+.btn-admin-remove {
+    background: none;
+    border: 2px solid #aa0c0c;
+    color: #aa0c0c;
+}
+
+.btn-admin-remove:hover {
+    background: #aa0c0c;
+    color: #fff;
+}
+
+.admin-toggle {
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.toggle-add-admin {
+    /* font-size: x-large; */
+    font-weight: 600;
+    color: #6C63FF;
+    cursor: pointer;
+}
+
+.toggle-add-admin:hover {
+    color: #37329e;
+}
+
+.separator {
+    margin: 5px;
+}
+
+h4 {
+    margin-top: 0;
+    color: #37329e;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 0;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: left;
+}
+
+.divider {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border: 0;
+    border-top: .5px solid #eee;
+}

@@ -1,0 +1,55 @@
+<app-header></app-header>
+<div class="shopping-cart">
+  <!-- Title -->
+  <a (click)="onBack()"><i class="fa-solid fa-arrow-left"></i></a>
+  <div class="title">
+    Shopping Cart
+  </div>
+
+  <div>
+    <a class="delete-bth" (click)="deleteCart()">Clear Cart</a>
+  </div>
+
+  <!-- Product #1 -->
+  <div *ngFor="let product of cartItems" class="item">
+    <div class="buttons">
+      <span class="delete-btn"></span>
+      <span class="like-btn"></span>
+    </div>
+
+    <div class="image">
+      <img src="{{product.fish.image}}" alt="" />
+    </div>
+
+    <div class="description">
+      <span>{{product.fish.name}}</span>
+      <!-- <span>{{product.quantity}}</span> -->
+      <span>{{product.fish.category}}</span>
+    </div>
+
+    <div class="quantity">
+      <button class="plus-bth" (click)="increaseQuantity(product)" type="button" name="button">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+      <input type="text" min="0" max="999" name="name" [value]="product.quantity">
+      <button class="minus-bth" (click)="decreaseQuantity(product)" type="button" name="button">
+        <i class="fa-solid fa-minus"></i>
+      </button>
+    </div>
+
+    <div class="total-price">${{product.priceTotal}}</div>
+
+    <div class="remove-item">
+      <button class="remove-bth" (click)="removeItem(product)" type="button" name="button">
+        <i class="fa-solid fa-times"></i>
+      </button>
+    </div>
+  </div>
+  <div class="grand-total">
+    <span>Grand Total</span>
+    <span>${{grandTotal}}</span>
+  </div>
+  <div>
+    <button class="btn-success" (click)="checkout()">Checkout</button>
+  </div>
+</div>

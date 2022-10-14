@@ -16,6 +16,10 @@ export class AddressesService {
     return this.angularFirestore.collection('addresses').doc(id).valueChanges();
   }
 
+  getAddressesByCompanyId(companyId: string) {
+    return this.angularFirestore.collection('addresses', ref => ref.where('companyId', '==', companyId)).snapshotChanges();
+  }
+
   async createAddress(address: any) {
     return await this.angularFirestore.collection('addresses').add(address);
   }

@@ -1,13 +1,154 @@
-<swiper [slidesPerView]="element" [spaceBetween]="15" [navigation]="navigation" [loop]="false" [autoplay]="true">
-    <ng-template class="div-slide" swiperSlide *ngFor="let fish of products">
-        <div class="card">
-            <img class="card-img-top" src="{{fish.image}}">
-            <div class="card-body">
-                <h5 class="card-title">{{fish.name}}</h5>
-                <p id="c-text" class="card-text">Price: $<strong>{{fish.price}}</strong> USD.</p>
-                <p id="c-text-two" class="card-text">Stock: <strong>{{fish.quantity}}</strong> uds.</p>
-                <a href="#" class="btn btn-primary">Add to cart</a>
-            </div>
+<div class="container admin-toggle">
+    <a class="toggle-add-admin" *ngIf="getRole() && getRole() == 'admin'" (click)="toggleAddFish()">NEW <i
+            [class]="(!newFishShow ? 'fa-solid fa-angle-down' : 'fa-solid fa-angle-up')"></i></a>
+</div>
+<div [hidden]="!newFishShow" *ngIf="getRole() && getRole() == 'admin'" class="container admin-add">
+    <div class="card">
+        <div class="card-body">
+            <img class="card-img" src="../../assets/fish-silhouettes.jpg">
+            <h5 class="card-title">ADD FISH</h5>
+            <a class="btn btn-outline-success btn-admin-add" (click)="createProduct()"><i
+                    class="fa-solid fa-plus"></i></a>
         </div>
-    </ng-template>
-</swiper>
+    </div>
+</div>
+<div *ngIf="!((getSearched()?.length || 0) > 0); else elseBlock">
+    <div class="divider"></div>
+    <h4>ALL</h4>
+    <swiper [slidesPerView]="element" [spaceBetween]="15" [navigation]="navigation" [loop]="false" [autoplay]="true">
+        <ng-template class="div-slide" swiperSlide *ngFor="let fish of products">
+            <div class="card">
+                <img class="card-img-top" src="{{fish.image}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{fish.name}}</h5>
+                    <p id="c-text" class="card-text">Price: $<strong>{{fish.price}}</strong> USD.</p>
+                    <p id="c-text-two" class="card-text">Stock: <strong>{{fish.quantity}}</strong> uds.</p>
+                    <a *ngIf="getRole() && getRole() == 'user'" (click)="viewProduct(fish.id)" class="btn btn-primary">View</a>
+                    <a *ngIf="getRole() && getRole() == 'admin'" class="btn btn-outline-primary btn-admin-edit"
+                        (click)="updateProduct(fish.id)"><i class="fa-solid fa-pen"></i></a>
+                    <span class="separator"></span>
+                    <a *ngIf="getRole() && getRole() == 'admin'" class="btn btn-outline-danger btn-admin-remove"
+                        (click)="deleteProduct(fish.id)"><i class="fa-solid fa-trash-can"></i></a>
+                </div>
+            </div>
+        </ng-template>
+    </swiper>
+    <div *ngIf="(productsSea?.length || 0) > 0">
+        <div class="divider"></div>
+        <h4>SEA</h4>
+        <swiper [slidesPerView]="element" [spaceBetween]="15" [navigation]="navigation" [loop]="false"
+            [autoplay]="true">
+            <ng-template class="div-slide" swiperSlide *ngFor="let fish of productsSea">
+                <div class="card">
+                    <img class="card-img-top" src="{{fish.image}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{fish.name}}</h5>
+                        <p id="c-text" class="card-text">Price: $<strong>{{fish.price}}</strong> USD.</p>
+                        <p id="c-text-two" class="card-text">Stock: <strong>{{fish.quantity}}</strong> uds.</p>
+                        <a *ngIf="getRole() && getRole() == 'user'" (click)="viewProduct(fish.id)"
+                            class="btn btn-primary">View</a>
+                        <a *ngIf="getRole() && getRole() == 'admin'" class="btn btn-outline-primary btn-admin-edit"
+                            (click)="updateProduct(fish.id)"><i class="fa-solid fa-pen"></i></a>
+                        <span class="separator"></span>
+                        <a *ngIf="getRole() && getRole() == 'admin'" class="btn btn-outline-danger btn-admin-remove"
+                            (click)="deleteProduct(fish.id)"><i class="fa-solid fa-trash-can"></i></a>
+                    </div>
+                </div>
+            </ng-template>
+        </swiper>
+    </div>
+    <div *ngIf="(productsFishFarm?.length || 0) > 0">
+        <div class="divider"></div>
+        <h4>FISH FARM</h4>
+        <swiper [slidesPerView]="element" [spaceBetween]="15" [navigation]="navigation" [loop]="false"
+            [autoplay]="true">
+            <ng-template class="div-slide" swiperSlide *ngFor="let fish of productsFishFarm">
+                <div class="card">
+                    <img class="card-img-top" src="{{fish.image}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{fish.name}}</h5>
+                        <p id="c-text" class="card-text">Price: $<strong>{{fish.price}}</strong> USD.</p>
+                        <p id="c-text-two" class="card-text">Stock: <strong>{{fish.quantity}}</strong> uds.</p>
+                        <a *ngIf="getRole() && getRole() == 'user'" (click)="viewProduct(fish.id)"
+                            class="btn btn-primary">View</a>
+                        <a *ngIf="getRole() && getRole() == 'admin'" class="btn btn-outline-primary btn-admin-edit"
+                            (click)="updateProduct(fish.id)"><i class="fa-solid fa-pen"></i></a>
+                        <span class="separator"></span>
+                        <a *ngIf="getRole() && getRole() == 'admin'" class="btn btn-outline-danger btn-admin-remove"
+                            (click)="deleteProduct(fish.id)"><i class="fa-solid fa-trash-can"></i></a>
+                    </div>
+                </div>
+            </ng-template>
+        </swiper>
+    </div>
+    <div *ngIf="(productsRiver?.length || 0) > 0">
+        <div class="divider"></div>
+        <h4>RIVER</h4>
+        <swiper [slidesPerView]="element" [spaceBetween]="15" [navigation]="navigation" [loop]="false"
+            [autoplay]="true">
+            <ng-template class="div-slide" swiperSlide *ngFor="let fish of productsRiver">
+                <div class="card">
+                    <img class="card-img-top" src="{{fish.image}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{fish.name}}</h5>
+                        <p id="c-text" class="card-text">Price: $<strong>{{fish.price}}</strong> USD.</p>
+                        <p id="c-text-two" class="card-text">Stock: <strong>{{fish.quantity}}</strong> uds.</p>
+                        <a *ngIf="getRole() && getRole() == 'user'" (click)="viewProduct(fish.id)"
+                            class="btn btn-primary">View</a>
+                        <a *ngIf="getRole() && getRole() == 'admin'" class="btn btn-outline-primary btn-admin-edit"
+                            (click)="updateProduct(fish.id)"><i class="fa-solid fa-pen"></i></a>
+                        <span class="separator"></span>
+                        <a *ngIf="getRole() && getRole() == 'admin'" class="btn btn-outline-danger btn-admin-remove"
+                            (click)="deleteProduct(fish.id)"><i class="fa-solid fa-trash-can"></i></a>
+                    </div>
+                </div>
+            </ng-template>
+        </swiper>
+    </div>
+    <div *ngIf="(productsSeaFood?.length || 0) > 0">
+        <div class="divider"></div>
+        <h4>SEAFOOD</h4>
+        <swiper [slidesPerView]="element" [spaceBetween]="15" [navigation]="navigation" [loop]="false"
+            [autoplay]="true">
+            <ng-template class="div-slide" swiperSlide *ngFor="let fish of productsSeaFood">
+                <div class="card">
+                    <img class="card-img-top" src="{{fish.image}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{fish.name}}</h5>
+                        <p id="c-text" class="card-text">Price: $<strong>{{fish.price}}</strong> USD.</p>
+                        <p id="c-text-two" class="card-text">Stock: <strong>{{fish.quantity}}</strong> uds.</p>
+                        <a *ngIf="getRole() && getRole() == 'user'" (click)="viewProduct(fish.id)"
+                            class="btn btn-primary">View</a>
+                        <a *ngIf="getRole() && getRole() == 'admin'" class="btn btn-outline-primary btn-admin-edit"
+                            (click)="updateProduct(fish.id)"><i class="fa-solid fa-pen"></i></a>
+                        <span class="separator"></span>
+                        <a *ngIf="getRole() && getRole() == 'admin'" class="btn btn-outline-danger btn-admin-remove"
+                            (click)="deleteProduct(fish.id)"><i class="fa-solid fa-trash-can"></i></a>
+                    </div>
+                </div>
+            </ng-template>
+        </swiper>
+    </div>
+</div>
+<ng-template #elseBlock>
+    <div class="divider"></div>
+    <h4>SEARCH</h4>
+    <swiper [slidesPerView]="element" [spaceBetween]="15" [navigation]="navigation" [loop]="false" [autoplay]="true">
+        <ng-template class="div-slide" swiperSlide *ngFor="let fish of getSearched()">
+            <div class="card">
+                <img class="card-img-top" src="{{fish.image}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{fish.name}}</h5>
+                    <p id="c-text" class="card-text">Price: $<strong>{{fish.price}}</strong> USD.</p>
+                    <p id="c-text-two" class="card-text">Stock: <strong>{{fish.quantity}}</strong> uds.</p>
+                    <a *ngIf="getRole() && getRole() == 'user'" (click)="viewProduct(fish.id)" class="btn btn-primary">View</a>
+                    <a *ngIf="getRole() && getRole() == 'admin'" class="btn btn-outline-primary btn-admin-edit"
+                        (click)="updateProduct(fish.id)"><i class="fa-solid fa-pen"></i></a>
+                    <span class="separator"></span>
+                    <a *ngIf="getRole() && getRole() == 'admin'" class="btn btn-outline-danger btn-admin-remove"
+                        (click)="deleteProduct(fish.id)"><i class="fa-solid fa-trash-can"></i></a>
+                </div>
+            </div>
+        </ng-template>
+    </swiper>
+</ng-template>

@@ -26,6 +26,10 @@ export class FishesService {
     return this.angularFirestore.collection('fishes').doc(id).valueChanges();
   }
 
+  getFishByCategory(category: string) {
+    return this.angularFirestore.collection('fishes', ref => ref.where('category', '==', category)).snapshotChanges();
+  }
+
   async createFish(fish: any) {
     return await this.angularFirestore.collection('fishes').add(fish);
   }

@@ -1,0 +1,51 @@
+<app-header></app-header>
+<div class="container">
+    <!-- Left Column / Headphones Image -->
+    <div class="left-column">
+        <img src="{{products.image}}">
+    </div>
+
+    <!-- Right Column -->
+    <div class="right-column">
+        <!-- Product Description -->
+        <div class="product-description">
+            <a (click)="onBack()"><i class="fa-solid fa-arrow-left"></i></a>
+            <span>{{products.category}}</span>
+            <h1>{{products.name}}</h1>
+            <p>{{products.description}}</p>
+        </div>
+
+        <!-- Product Configuration -->
+        <div class="product-configuration">
+            <!-- Product Color -->
+            <div class="product-info">
+                <span>Stock: <strong>{{products.quantity}}</strong> uds<br></span>
+                <span>Quantity: <strong>
+                    <form [formGroup]="quantityForm" (ngSubmit)="addToCart(products)">
+                        <input formControlName="quantity" type="number" class="form-control" min="{{min}}" max="{{max}}" value="0" name="quantity">
+                        <div class="alert-danger" *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)">
+                            <div class="container-error-message" *ngIf="quantity.errors?.['required']">
+                                <span class="error-message">Quantity is required</span>
+                            </div>
+                            <div class="container-error-message"
+                                *ngIf="quantity.errors?.['min']">
+                                <span class="error-message">Quantity must be greater than {{min-1}}</span>
+                            </div>
+                            <div class="container-error-message"
+                                *ngIf="quantity.errors?.['max']">
+                                <span class="error-message">Quantity must be less than {{max+1}}</span>
+                            </div>
+                        </div>
+                        <button [disabled]="!quantityForm.valid" type="submit" id="btn-add" #addCart></button>
+                    </form>
+                </strong> uds</span>
+            </div>
+        </div>
+
+        <!-- Product Pricing -->
+        <div class="product-price">
+            <span>{{price}}$</span>
+            <a class="cart-btn" (click)="addCart.click()">Add to cart</a>
+        </div>
+    </div>
+</div>
